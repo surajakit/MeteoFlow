@@ -1,0 +1,4 @@
+flask
+cohere
+requests
+feedparser
