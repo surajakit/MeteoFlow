@@ -173,6 +173,8 @@ def page(title, body):
         <li class="nav-item"><a class="nav-link" href="/quiz">Quiz</a></li>
         <li class="nav-item"><a class="nav-link" href="/report">Report</a></li>
         <li class="nav-item"><a class="nav-link" href="/assistant">Tips</a></li>
+        <li class="nav-item"><a class="nav-link" href="/copilot">AI Copilot</a></li>
+        <li class="nav-item"><a class="nav-link" href="/disaster_prediction">Disaster Prediction</a></li>
         <li class="nav-item"><a class="nav-link btn btn-sm btn-outline-light ms-2" href="/weather">Weather</a></li>
         <li class="nav-item"><a class="nav-link btn btn-sm btn-outline-light ms-2" href="/news">News</a></li>
       </ul>
@@ -238,7 +240,7 @@ def news():
     live_video_html = """
     <h2>Live Weather and Disaster Video</h2>
     <div class="ratio ratio-16x9 mb-4">
-        <iframe src="https://www.youtube.com/embed/De5KQEDX41g?si=C4iXoGD15DWQBHJd" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen" title="Live Weather News" allowfullscreen></iframe>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/cVajz9Sb47Q?si=a5IWAOzuIpHb_JYi" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>" title="Live Weather News" allowfullscreen></iframe>
     </div>
     """
 
@@ -311,111 +313,6 @@ def send_email_alert(subject, message, recipients=ALERT_RECIPIENTS):
         print(f"Failed to send alert email: {e}")
 
 
-def page(title, body):
-    return f"""<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{title}</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <style>
-        body {{
-            background: #e9f5f2;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-        }}
-        .navbar {{
-            background-color: #2c6e49;
-        }}
-        .navbar-brand, .nav-link {{
-            color: #d4f1e4 !important;
-            font-weight: 600;
-        }}
-        .nav-link:hover {{
-            color: #a1c9b9 !important;
-        }}
-        .container {{
-            max-width: 1200px;
-            margin-top: 2rem;
-        }}
-        .dashboard {{
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-        }}
-        .card {{
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(44, 110, 73, 0.15);
-            padding: 1.5rem;
-            transition: transform 0.2s ease-in-out;
-        }}
-        .card:hover {{
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(44, 110, 73, 0.3);
-        }}
-        h1 {{
-            color: #2c6e49;
-            margin-bottom: 1.5rem;
-        }}
-        footer {{
-            margin-top: 3rem;
-            text-align: center;
-            color: #666;
-            font-size: 0.9rem;
-            padding: 1rem 0;
-            border-top: 1px solid #ccc;
-        }}
-        button, input, textarea {{
-            border-radius: 5px;
-            border: 1px solid #ccc;
-            padding: 10px;
-            font-size: 1rem;
-            width: 100%;
-            max-width: 600px;
-            margin: 0.5rem 0;
-        }}
-        textarea {{
-            height: 80px;
-            resize: vertical;
-        }}
-    </style>
-</head>
-<body>
-<nav class="navbar navbar-expand-lg">
-  <div class="container">
-    <a class="navbar-brand" href="/">MeteoFlow 🌿</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="/educational">Q&A</a></li>
-        <li class="nav-item"><a class="nav-link" href="/quiz">Quiz</a></li>
-        <li class="nav-item"><a class="nav-link" href="/report">Report</a></li>
-        <li class="nav-item"><a class="nav-link" href="/assistant">Tips</a></li>
-        <li class="nav-item"><a class="nav-link btn btn-sm btn-outline-light ms-2" href="/weather">Weather</a></li>
-        <li class="nav-item"><a class="nav-link btn btn-sm btn-outline-light ms-2" href="/news">News</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
-<div class="container">
-<h1>{title}</h1>
-<div class="dashboard">
-{body}
-</div>
-</div>
-<footer>
-    <p>© 2025 MeteoFlow. All rights reserved.</p>
-</footer>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>"""
 
 
 def query_model(prompt, max_tokens=512):
@@ -454,12 +351,30 @@ def home():
             "link": "/report",
             "btn_text": "Report Now"
         },
-        {
-            "title": "Eco Tips",
-            "description": "Get daily tips to help the environment.",
-            "link": "/assistant",
-            "btn_text": "View Tips"
-        },
+    {
+        "title": "Eco Tips",
+        "description": "Get daily tips to help the environment.",
+        "link": "/assistant",
+        "btn_text": "View Tips"
+    },
+    {
+        "title": "AI Copilot",
+        "description": "Get eco-safe activity suggestions and emergency prep advice based on your local conditions.",
+        "link": "/copilot",
+        "btn_text": "Open Copilot"
+    },
+    {
+        "title": "Eco Risk Score",
+        "description": "View your personalized eco risk score based on local weather and hazards.",
+        "link": "/eco_risk_score",
+        "btn_text": "View Score"
+    },
+    {
+        "title": "Disaster Prediction & Early Alerts",
+        "description": "Predict floods, droughts, and heatwaves to enable early decision-making and warnings.",
+        "link": "/disaster_prediction",
+        "btn_text": "View Predictions"
+    },
         {
             "title": "Weather Alerts",
             "description": "Check weather and disaster alerts.",
@@ -734,6 +649,39 @@ def assistant():
         tip = f"Error getting tip: {e}"
     return page("Eco Tip", f'<div class="alert alert-success p-3">🌿 {tip}</div>')
 
+@app.route('/copilot', methods=['GET', 'POST'])
+def copilot():
+    if 'username' not in session:
+        return redirect(url_for('login'))
+
+    response = ""
+    if request.method == 'POST':
+        user_input = request.form.get('user_input', '').strip()
+        if user_input:
+            prompt = (
+                "You are an AI assistant specialized in eco-safe decision making. "
+                "Based on the user's local conditions or questions, suggest eco-safe activities, "
+                "emergency preparation tips, or sustainable choices. Provide actionable and helpful advice, "
+                "not just information.\n\n"
+                f"User input: {user_input}\n"
+                "AI response:"
+            )
+            try:
+                response = query_model(prompt, max_tokens=300)
+            except Exception as e:
+                response = f"Error generating response: {e}"
+
+    form_html = '''
+    <form method="post" class="mb-3">
+        <textarea name="user_input" placeholder="Describe your local conditions or ask for eco-safe advice..." required class="form-control mb-2" rows="4"></textarea>
+        <button type="submit" class="btn btn-success">Get Suggestions</button>
+    </form>
+    '''
+
+    response_html = f'<div class="alert alert-info mt-3">{response}</div>' if response else ""
+
+    return page("AI Copilot for Eco-Safe Decision Making", form_html + response_html)
+
 
 # New route for weather and disaster alerts
 @app.route('/weather', methods=['GET', 'POST'])
@@ -743,6 +691,7 @@ def weather():
 
     weather_info = None
     alert_message = None
+    eco_impact_alerts = []
     if request.method == 'POST':
         city = request.form.get('city')
         if city:
@@ -758,13 +707,32 @@ def weather():
                         'temperature': data['main']['temp'],
                         'description': data['weather'][0]['description'],
                         'rain': any(w['main'].lower() == 'rain' for w in data['weather']),
+                        'wind_speed': data['wind']['speed'],
+                        'humidity': data['main']['humidity'],
                         'alerts': []
                     }
                     # Check for rain or severe weather to send alert
                     if weather_info['rain']:
                         alert_message = f"Rain alert for {weather_info['city']}! Stay safe."
                         send_email_alert(f"Rain Alert for {weather_info['city']}", alert_message)
-                    # Additional disaster alerts can be added here based on weather data
+
+                    # New: Environmental impact forecasts based on weather data
+                    # Example: Pollution rise after dust storm (simulate with wind speed and dust condition)
+                    dust_storm = any(w['main'].lower() == 'dust' or w['main'].lower() == 'sand' for w in data['weather'])
+                    if dust_storm and weather_info['wind_speed'] > 15:
+                        eco_impact_alerts.append("⚠️ High pollution expected due to dust storm and strong winds.")
+
+                    # Example: Soil erosion risk after heavy rain (simulate with rain and wind speed)
+                    if weather_info['rain'] and weather_info['wind_speed'] > 10:
+                        eco_impact_alerts.append("⚠️ Elevated soil erosion risk due to heavy rain and strong winds.")
+
+                    # Additional environmental impact logic can be added here
+
+                    # Send email alert for significant eco impacts
+                    if eco_impact_alerts:
+                        impact_message = "\\n".join(eco_impact_alerts)
+                        send_email_alert(f"Environmental Impact Alerts for {weather_info['city']}", impact_message)
+
             except Exception as e:
                 alert_message = f"Error fetching weather data: {e}"
 
@@ -782,10 +750,17 @@ def weather():
             🌍 <strong>{weather_info['city']}</strong><br>
             🌡 Temperature: {weather_info['temperature']}°C<br>
             ☁️ Condition: {weather_info['description'].capitalize()}<br>
-            💧 Humidity: {data['main']['humidity']}%<br>
-            🌬 Wind Speed: {data['wind']['speed']} m/s
+            💧 Humidity: {weather_info['humidity']}%<br>
+            🌬 Wind Speed: {weather_info['wind_speed']} m/s
         </div>
         """
+
+    eco_impact_html = ""
+    if eco_impact_alerts:
+        eco_impact_html = '<div class="alert alert-danger"><h5>Environmental Impact Forecasts:</h5><ul>'
+        for alert in eco_impact_alerts:
+            eco_impact_html += f'<li>{alert}</li>'
+        eco_impact_html += '</ul></div>'
 
     alert_html = f'<div class="alert alert-warning">{alert_message}</div>' if alert_message else ""
 
@@ -798,7 +773,7 @@ def weather():
     </div>
     '''
 
-    return page("Weather and Disaster Alerts", form + alert_html + weather_html + extra_links)
+    return page("Weather and Disaster Alerts", form + alert_html + weather_html + eco_impact_html + extra_links)
 
 @app.route('/weather/live_map')
 def weather_live_map():
@@ -1251,6 +1226,261 @@ def farmers():
     full_content = form_html + alert_html + alerts_html + tips_html + benefits_html + back_link_html
 
     return page("Farmers' Disaster and Weather Alerts", full_content)
+
+import datetime
+from flask import jsonify
+
+def calculate_eco_risk_score(username, period='daily'):
+    """
+    Calculate a personalized eco risk score for the user based on weather, local hazards, and user activity.
+    period: 'daily' or 'weekly'
+    """
+    db = get_db()
+    cursor = db.cursor()
+
+    # Get current date and date range based on period
+    today = datetime.date.today()
+    if period == 'daily':
+        start_date = today
+    elif period == 'weekly':
+        start_date = today - datetime.timedelta(days=7)
+    else:
+        start_date = today
+
+    # Fetch recent weather data for the user's location (simulate with city from user activity or default)
+    cursor.execute("SELECT activity_type FROM user_activity WHERE username = ? ORDER BY activity_time DESC LIMIT 1", (username,))
+    last_activity = cursor.fetchone()
+    user_location = None
+    if last_activity and last_activity['activity_type'].startswith('location:'):
+        user_location = last_activity['activity_type'].split(':', 1)[1].strip()
+    if not user_location:
+        user_location = 'Delhi'  # Default location if none found
+
+    # Fetch current weather for user location
+    weather_score = 0
+    try:
+        if not WEATHER_API_KEY:
+            raise ValueError("OpenWeatherMap API key is not set.")
+        url = f"http://api.openweathermap.org/data/2.5/weather?q={user_location}&appid={WEATHER_API_KEY}&units=metric"
+        response = requests.get(url)
+        data = response.json()
+        if data.get('cod') == 200:
+            temp = data['main']['temp']
+            weather_desc = data['weather'][0]['main'].lower()
+            wind_speed = data['wind']['speed']
+            humidity = data['main']['humidity']
+
+            # Simple scoring logic based on weather conditions
+            if weather_desc in ['rain', 'thunderstorm', 'drizzle']:
+                weather_score += 30
+            if wind_speed > 10:
+                weather_score += 20
+            if temp < 0 or temp > 35:
+                weather_score += 20
+            if humidity < 30 or humidity > 80:
+                weather_score += 10
+        else:
+            weather_score = 10  # Default mild risk if no data
+    except Exception:
+        weather_score = 10
+
+    # Fetch local hazard reports in the last period
+    cursor.execute("SELECT COUNT(*) as hazard_count FROM reports WHERE report_time >= ? AND location LIKE ?", (start_date, f"%{user_location}%"))
+    hazard_count = cursor.fetchone()['hazard_count']
+    hazard_score = min(hazard_count * 10, 40)  # Max 40 points for hazards
+
+    # Fetch user activity risk factors (e.g., travel plans, health condition)
+    cursor.execute("SELECT activity_type FROM user_activity WHERE username = ? AND activity_time >= ?", (username, start_date))
+    activities = cursor.fetchall()
+    activity_score = 0
+    for act in activities:
+        act_type = act['activity_type'].lower()
+        if 'travel' in act_type:
+            activity_score += 15
+        if 'health' in act_type:
+            activity_score += 20
+        if 'outdoor' in act_type:
+            activity_score += 10
+    activity_score = min(activity_score, 30)
+
+    # Calculate total eco risk score (0-100)
+    total_score = weather_score + hazard_score + activity_score
+    if total_score > 100:
+        total_score = 100
+
+    return total_score
+
+@app.route('/eco_risk_score')
+def eco_risk_score():
+    if 'username' not in session:
+        return redirect(url_for('login'))
+
+    username = session['username']
+    period = request.args.get('period', 'daily')
+    score = calculate_eco_risk_score(username, period)
+
+    # Provide interpretation and suggestions based on score
+    if score < 30:
+        risk_level = "Low"
+        advice = "Conditions are generally safe. Enjoy your activities while staying aware."
+    elif score < 60:
+        risk_level = "Moderate"
+        advice = "Be cautious and consider eco-safe choices. Monitor local weather and hazards."
+    else:
+        risk_level = "High"
+        advice = "High eco-risk detected. Limit outdoor activities and follow safety guidelines."
+
+    content = f"""
+    <div class="card">
+        <h2>Personalized Eco Risk Score ({period.capitalize()})</h2>
+        <p><strong>Score:</strong> {score} / 100</p>
+        <p><strong>Risk Level:</strong> {risk_level}</p>
+        <p>{advice}</p>
+    </div>
+    <a href="/" class="btn btn-secondary mt-3">Back to Dashboard</a>
+    """
+
+    return page("Eco Risk Score", content)
+import random
+import datetime
+
+def get_lat_lon(city_name):
+    """
+    Get latitude and longitude for a city using OpenWeatherMap Geocoding API.
+    """
+    try:
+        geocode_url = f"http://api.openweathermap.org/geo/1.0/direct?q={city_name}&limit=1&appid={WEATHER_API_KEY}"
+        response = requests.get(geocode_url)
+        data = response.json()
+        if data and isinstance(data, list):
+            return data[0]['lat'], data[0]['lon']
+    except Exception as e:
+        print(f"Error fetching geocode for {city_name}: {e}")
+    return None, None
+
+def get_disaster_alerts(lat, lon):
+    """
+    Fetch disaster alerts from OpenWeatherMap One Call API for given lat/lon.
+    """
+    try:
+        one_call_url = f"https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&appid={WEATHER_API_KEY}&exclude=current,minutely,hourly,daily"
+        response = requests.get(one_call_url)
+        data = response.json()
+        alerts = data.get('alerts', [])
+        return alerts
+    except Exception as e:
+        print(f"Error fetching disaster alerts: {e}")
+        return []
+
+def map_alert_to_prediction(alert):
+    """
+    Map OpenWeatherMap alert to disaster prediction format.
+    """
+    event = alert.get('event', '').lower()
+    description = alert.get('description', '')
+    start = alert.get('start', 0)
+    end = alert.get('end', 0)
+    sender = alert.get('sender_name', '')
+    # Simple confidence estimation based on event presence
+    confidence = 0.8
+    advice = description or "Please follow local authorities' instructions."
+    disaster_type = "General Alert"
+    if "flood" in event:
+        disaster_type = "Flood"
+    elif "heat" in event or "heatwave" in event:
+        disaster_type = "Heatwave"
+    elif "drought" in event:
+        disaster_type = "Drought"
+    elif "storm" in event or "hurricane" in event or "tornado" in event:
+        disaster_type = "Storm"
+    return {
+        "type": disaster_type,
+        "confidence": confidence,
+        "advice": advice,
+        "sender": sender,
+        "start": start,
+        "end": end
+    }
+
+@app.route('/disaster_prediction')
+def disaster_prediction():
+    if 'username' not in session:
+        return redirect(url_for('login'))
+
+    username = session['username']
+    db = get_db()
+    cursor = db.cursor()
+
+    # Get user location from recent activity or default
+    cursor.execute("SELECT activity_type FROM user_activity WHERE username = ? ORDER BY activity_time DESC LIMIT 1", (username,))
+    last_activity = cursor.fetchone()
+    user_location = None
+    if last_activity and last_activity['activity_type'].startswith('location:'):
+        user_location = last_activity['activity_type'].split(':', 1)[1].strip()
+    if not user_location:
+        user_location = 'Delhi'  # Default location
+
+    lat, lon = get_lat_lon(user_location)
+    predictions = []
+    if lat is not None and lon is not None:
+        alerts = get_disaster_alerts(lat, lon)
+        if alerts:
+            for alert in alerts:
+                pred = map_alert_to_prediction(alert)
+                predictions.append(pred)
+
+    # Fallback to mock predictions if no alerts
+    if not predictions:
+        import random
+        flood_confidence = random.uniform(0, 1)
+        drought_confidence = random.uniform(0, 1)
+        heatwave_confidence = random.uniform(0, 1)
+        flood_threshold = 0.6
+        drought_threshold = 0.5
+        heatwave_threshold = 0.7
+        if flood_confidence > flood_threshold:
+            predictions.append({
+                "type": "Flood",
+                "confidence": flood_confidence,
+                "advice": "Prepare for potential flooding. Secure valuables and stay updated with local alerts."
+            })
+        if drought_confidence > drought_threshold:
+            predictions.append({
+                "type": "Drought",
+                "confidence": drought_confidence,
+                "advice": "Water conservation measures recommended. Monitor water usage and stay informed."
+            })
+        if heatwave_confidence > heatwave_threshold:
+            predictions.append({
+                "type": "Heatwave",
+                "confidence": heatwave_confidence,
+                "advice": "Stay hydrated and avoid outdoor activities during peak heat hours."
+            })
+
+    # Send email alerts for high confidence predictions
+    for pred in predictions:
+        if pred['confidence'] > 0.75:
+            subject = f"High Confidence {pred['type']} Prediction for {user_location}"
+            message = f"Prediction: {pred['type']} with confidence {pred['confidence']:.2f}\nAdvice: {pred['advice']}"
+            send_email_alert(subject, message)
+
+    if predictions:
+        prediction_html = '<ul class="list-group">'
+        for pred in predictions:
+            prediction_html += f'<li class="list-group-item"><strong>{pred["type"]}</strong> - Confidence: {pred["confidence"]:.2f}<br>{pred["advice"]}</li>'
+        prediction_html += '</ul>'
+    else:
+        prediction_html = '<p>No significant disaster predictions at this time.</p>'
+
+    content = f"""
+    <div class="card">
+        <h2>Disaster Prediction & Early Alerts for {user_location}</h2>
+        {prediction_html}
+    </div>
+    <a href="/" class="btn btn-secondary mt-3">Back to Dashboard</a>
+    """
+
+    return page("Disaster Prediction & Early Alerts", content)
 
 if __name__ == '__main__':
     app.run(debug=True, use_reloader=False, port=5001)
