@@ -62,7 +62,7 @@ This will create the necessary tables in `app.db`.
 Start the Flask app with:
 
 ```bash
-python HF3.py
+python HF3one.py
 ```
 
 The app will be accessible at `http://127.0.0.1:5000/`.
