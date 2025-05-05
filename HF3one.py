@@ -238,7 +238,7 @@ def news():
     live_video_html = """
     <h2>Live Weather and Disaster Video</h2>
     <div class="ratio ratio-16x9 mb-4">
-        <iframe src="https://www.youtube.com/watch?v=4cU8smdVBJI" title="Live Weather News" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/De5KQEDX41g?si=C4iXoGD15DWQBHJd" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen" title="Live Weather News" allowfullscreen></iframe>
     </div>
     """
 
@@ -809,7 +809,7 @@ def weather_live_map():
     iframe_html = """
     <h2>Live Weather Map</h2>
     <iframe src="https://openweathermap.org/weathermap?basemap=map&cities=true&layer=temperature&lat=20&lon=0&zoom=2" 
-    width="100%" height="600" style="border:none;"></iframe>
+    width="1000" height="700" style="border:none;"></iframe>
     <div class="mt-3">
         <a href="/weather" class="btn btn-secondary">Back to Weather</a>
     </div>
