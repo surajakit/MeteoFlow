@@ -62,6 +62,197 @@ def init_db():
 
 init_db()
 
+import feedparser
+
+@app.route('/toggle_dark_mode')
+def toggle_dark_mode():
+    current_mode = session.get('dark_mode', False)
+    session['dark_mode'] = not current_mode
+    return redirect(request.referrer or url_for('home'))
+
+def page(title, body):
+    dark_mode = session.get('dark_mode', False)
+    bg_color = "#121212" if dark_mode else "#e9f5f2"
+    text_color = "#e9f5f2" if dark_mode else "#2c6e49"
+    nav_bg = "#1f1f1f" if dark_mode else "#2c6e49"
+    nav_link_color = "#d4f1e4" if dark_mode else "#d4f1e4"
+    nav_link_hover = "#a1c9b9" if dark_mode else "#a1c9b9"
+    card_bg = "#1e1e1e" if dark_mode else "white"
+    card_shadow = "0 4px 12px rgba(255, 255, 255, 0.15)" if dark_mode else "0 4px 12px rgba(44, 110, 73, 0.15)"
+    card_shadow_hover = "0 8px 20px rgba(255, 255, 255, 0.3)" if dark_mode else "0 8px 20px rgba(44, 110, 73, 0.3)"
+    return f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        body {{
+            background: {bg_color};
+            color: {text_color};
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+        }}
+        .navbar {{
+            background-color: {nav_bg};
+        }}
+        .navbar-brand, .nav-link {{
+            color: {nav_link_color} !important;
+            font-weight: 600;
+        }}
+        .nav-link:hover {{
+            color: {nav_link_hover} !important;
+        }}
+        .container {{
+            max-width: 1200px;
+            margin-top: 2rem;
+        }}
+        .dashboard {{
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }}
+        .card {{
+            background: {card_bg};
+            border-radius: 10px;
+            box-shadow: {card_shadow};
+            padding: 1.5rem;
+            transition: transform 0.2s ease-in-out;
+        }}
+        .card:hover {{
+            transform: translateY(-5px);
+            box-shadow: {card_shadow_hover};
+        }}
+        h1 {{
+            color: {text_color};
+            margin-bottom: 1.5rem;
+        }}
+        footer {{
+            margin-top: 3rem;
+            text-align: center;
+            color: {text_color};
+            font-size: 0.9rem;
+            padding: 1rem 0;
+            border-top: 1px solid #ccc;
+        }}
+        button, input, textarea {{
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            font-size: 1rem;
+            width: 100%;
+            max-width: 600px;
+            margin: 0.5rem 0;
+        }}
+        textarea {{
+            height: 80px;
+            resize: vertical;
+        }}
+        .dark-mode-toggle {{
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            z-index: 1050;
+        }}
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg">
+  <div class="container">
+    <a class="navbar-brand" href="/">MeteoFlow 🌿</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="/educational">Q&A</a></li>
+        <li class="nav-item"><a class="nav-link" href="/quiz">Quiz</a></li>
+        <li class="nav-item"><a class="nav-link" href="/report">Report</a></li>
+        <li class="nav-item"><a class="nav-link" href="/assistant">Tips</a></li>
+        <li class="nav-item"><a class="nav-link btn btn-sm btn-outline-light ms-2" href="/weather">Weather</a></li>
+        <li class="nav-item"><a class="nav-link btn btn-sm btn-outline-light ms-2" href="/news">News</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<a href="/toggle_dark_mode" class="btn btn-secondary dark-mode-toggle">{'Light Mode' if dark_mode else 'Dark Mode'}</a>
+<div class="container">
+<h1>{title}</h1>
+<div class="dashboard">
+{body}
+</div>
+</div>
+<footer>
+    <p>© 2025 MeteoFlow. All rights reserved.</p>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>"""
+
+@app.route('/news')
+def news():
+    if 'username' not in session:
+        return redirect(url_for('login'))
+
+    # List of trusted RSS feed URLs for weather and disaster news
+    feed_urls = [
+        "https://indianexpress.com/section/weather/",
+        "https://timesofindia.indiatimes.com/city/delhi/breaking-news-today-04-may-2025-live-updates-weather-rain-temperature-delhi-gujarat-imd-badrinath-dham/liveblog/120865779.cms",
+        "https://www.bbc.com/weather",
+        "https://zeenews.india.com/india"
+    ]
+
+    news_items = []
+    for url in feed_urls:
+        feed = feedparser.parse(url)
+        for entry in feed.entries[:5]:  # Limit to 5 entries per feed
+            news_items.append({
+                'title': entry.title,
+                'link': entry.link,
+                'published': entry.published if 'published' in entry else '',
+                'summary': entry.summary if 'summary' in entry else ''
+            })
+
+    # Sort news items by published date descending if possible
+    try:
+        news_items.sort(key=lambda x: x['published'], reverse=True)
+    except Exception:
+        pass
+
+    # Fetch reported incidents from database
+    db = get_db()
+    cursor = db.cursor()
+    cursor.execute('SELECT * FROM reports ORDER BY report_time DESC LIMIT 10')
+    reports = cursor.fetchall()
+
+    news_html = '<h2>Live Weather and Disaster News</h2><ul class="list-group mb-4">'
+    for item in news_items[:20]:  # Show top 20 news items
+        news_html += f'<li class="list-group-item"><a href="{item["link"]}" target="_blank">{item["title"]}</a><br><small>{item["published"]}</small><p>{item["summary"]}</p></li>'
+    news_html += '</ul>'
+
+    # Embed live video content (YouTube live streams for weather/disaster news)
+    live_video_html = """
+    <h2>Live Weather and Disaster Video</h2>
+    <div class="ratio ratio-16x9 mb-4">
+        <iframe src="https://www.youtube.com/watch?v=4cU8smdVBJI" title="Live Weather News" allowfullscreen></iframe>
+    </div>
+    """
+
+    reports_html = '<h2>Reported Incidents</h2>'
+    if reports:
+        reports_html += '<ul class="list-group">'
+        for r in reports:
+            reports_html += f'<li class="list-group-item">{r["issue"]} at <strong>{r["location"]}</strong> on {r["report_time"]}</li>'
+        reports_html += '</ul>'
+    else:
+        reports_html += '<p>No reported incidents yet.</p>'
+
+    return page("News and Reports", news_html + live_video_html + reports_html)
+
 # Remove in-memory lists
 # user_quiz_questions = []
 # reports = []
@@ -76,11 +267,11 @@ users = {
 WEATHER_API_KEY = os.getenv("OPENWEATHER_API_KEY", "7457ef10ed4f085cfa1d50715b07d2ac")
 AGRI_WEATHER_API_KEY = os.getenv("AGRI_WEATHER_API_KEY", WEATHER_API_KEY)  # Separate key for agriculture forecast, fallback to WEATHER_API_KEY
 OPEN_METEO_API_BASE = "https://api.open-meteo.com/v1/forecast"  # Free agricultural weather API base URL
-EMAIL_SENDER = os.getenv("EMAIL_SENDER", "smtp@mailtrap.io")
-EMAIL_PASSWORD = os.getenv("EMAIL_PASSWORD", "de061392f6fa610f361fcbbd3e59c409")
-EMAIL_SMTP_SERVER = os.getenv("EMAIL_SMTP_SERVER", "bulk.smtp.mailtrap.io")
+EMAIL_SENDER = os.getenv("EMAIL_SENDER", "akitmescrop@gmail.com")
+EMAIL_PASSWORD = os.getenv("EMAIL_PASSWORD", "MescropG@12")
+EMAIL_SMTP_SERVER = os.getenv("EMAIL_SMTP_SERVER", "smtp@mailtrap.io")
 EMAIL_SMTP_PORT = int(os.getenv("EMAIL_SMTP_PORT", 587))
-ALERT_RECIPIENTS = os.getenv("ALERT_RECIPIENTS", "email_list").split(",")
+ALERT_RECIPIENTS = os.getenv("ALERT_RECIPIENTS", "surajgoswamiv1@gmail.com").split(",")
 
 def log_user_activity(username, activity_type):
     db = get_db()
@@ -208,6 +399,7 @@ def page(title, body):
         <li class="nav-item"><a class="nav-link" href="/report">Report</a></li>
         <li class="nav-item"><a class="nav-link" href="/assistant">Tips</a></li>
         <li class="nav-item"><a class="nav-link btn btn-sm btn-outline-light ms-2" href="/weather">Weather</a></li>
+        <li class="nav-item"><a class="nav-link btn btn-sm btn-outline-light ms-2" href="/news">News</a></li>
       </ul>
     </div>
   </div>
@@ -291,7 +483,7 @@ def home():
             <a href="{card["link"]}" class="btn btn-success">{card["btn_text"]}</a>
         </div>
         '''
-    return page("MeteoFlow Dashboard", banner_html + card_html)
+    return page("MeteoFlow Helper Dashboard", banner_html + card_html)
 
 
 @app.route('/educational', methods=['GET', 'POST'])
@@ -590,7 +782,7 @@ def weather():
             🌍 <strong>{weather_info['city']}</strong><br>
             🌡 Temperature: {weather_info['temperature']}°C<br>
             ☁️ Condition: {weather_info['description'].capitalize()}<br>
-            💧 Humidity: {data['main']['humidity']}%<br>2024
+            💧 Humidity: {data['main']['humidity']}%<br>
             🌬 Wind Speed: {data['wind']['speed']} m/s
         </div>
         """
@@ -617,7 +809,7 @@ def weather_live_map():
     iframe_html = """
     <h2>Live Weather Map</h2>
     <iframe src="https://openweathermap.org/weathermap?basemap=map&cities=true&layer=temperature&lat=20&lon=0&zoom=2" 
-    width="1000" height="700" style="border:none ;"></iframe>
+    width="100%" height="600" style="border:none;"></iframe>
     <div class="mt-3">
         <a href="/weather" class="btn btn-secondary">Back to Weather</a>
     </div>
@@ -958,6 +1150,107 @@ def sdg_detail(sdg_name):
         """
 
     return page(f"SDG: {sdg_display_name}", content)
+
+@app.route('/farmers', methods=['GET', 'POST'])
+def farmers():
+    # Ensure user is logged in
+    if 'username' not in session:
+        return redirect(url_for('login'))
+
+    alert_message = None
+    city_name = None
+    agricultural_alerts = []
+
+    # Fun and easy tips for farmers to tackle weather and disasters
+    farmer_tips = [
+        "🌞 Keep an eye on the weather forecast – it's like your crop's daily horoscope!",
+        "❄️ Use covers or sprinklers to keep your plants cozy during frosty nights.",
+        "💧 Make sure water drains well to avoid soggy roots after heavy rains.",
+        "🌳 Plant some trees as windbreakers – your crops will thank you!",
+        "🌾 Store your seeds and fertilizers in a safe, dry spot.",
+        "📞 Stay connected with local farm experts for handy advice.",
+        "🌈 Try growing different crops to keep your farm happy and healthy.",
+        "🌱 Take care of your soil – it's the secret to great harvests!",
+        "🚿 Water your plants smartly during dry spells.",
+        "⚡ Have a quick plan ready for any weather surprises!"
+    ]
+
+    if request.method == 'POST':
+        city_name = request.form.get('city')
+        if city_name:
+            try:
+                # Call OpenWeatherMap API to get current weather data for the city
+                weather_api_url = f"http://api.openweathermap.org/data/2.5/weather?q={city_name}&appid={WEATHER_API_KEY}&units=metric"
+                response = requests.get(weather_api_url)
+                weather_data = response.json()
+
+                if weather_data.get('cod') != 200:
+                    alert_message = f"Oops! City '{city_name}' not found. Double-check the name and try again."
+                else:
+                    temp_celsius = weather_data['main']['temp']
+                    weather_description = weather_data['weather'][0]['description'].lower()
+                    wind_speed_mps = weather_data['wind']['speed']
+                    humidity_percent = weather_data['main']['humidity']
+
+                    # Generate simple agricultural alerts based on weather conditions
+                    if temp_celsius < 0:
+                        agricultural_alerts.append("🥶 Frost alert! Time to protect your crops from the chill.")
+                    if 'rain' in weather_description:
+                        agricultural_alerts.append("🌧 Rain alert! Get ready for some wet weather.")
+                    if wind_speed_mps > 10:
+                        agricultural_alerts.append("💨 Wind alert! Secure anything that might blow away.")
+                    if humidity_percent < 30:
+                        agricultural_alerts.append("🌵 Dry air alert! Your plants might need a drink.")
+
+                    if not agricultural_alerts:
+                        agricultural_alerts.append("🌟 All clear! No major weather worries for now.")
+
+            except Exception as error:
+                alert_message = f"Uh-oh! Couldn't fetch weather info: {error}"
+
+    # HTML form for city input
+    form_html = f"""
+    <form method="post" class="mb-3">
+        <input name="city" placeholder="Enter city name" value="{city_name or ''}" required class="form-control mb-2" />
+        <button type="submit" class="btn btn-primary">Get Agricultural Alerts</button>
+    </form>
+    """
+
+    # Display agricultural alerts if any
+    alerts_html = ""
+    if agricultural_alerts:
+        alerts_html += '<h3>Agricultural Weather Alerts</h3><ul class="list-group mb-4">'
+        for alert in agricultural_alerts:
+            alerts_html += f'<li class="list-group-item">{alert}</li>'
+        alerts_html += '</ul>'
+
+    # Display tips for farmers
+    tips_html = '<h3>Easy & Fun Tips to Tackle Weather & Disasters</h3><ul class="list-group mb-4">'
+    for tip in farmer_tips:
+        tips_html += f'<li class="list-group-item">{tip}</li>'
+    tips_html += '</ul>'
+
+    # Benefits information for farmers
+    benefits_html = """
+    <h3>Why Farmers Love This</h3>
+    <ul class="list-group">
+        <li class="list-group-item">Get timely weather alerts to keep your crops safe and sound.</li>
+        <li class="list-group-item">Handy tips that make farming easier and more fun.</li>
+        <li class="list-group-item">Email alerts so you never miss important updates.</li>
+        <li class="list-group-item">Support from local farm experts and community resources.</li>
+    </ul>
+    """
+
+    # Display any alert messages
+    alert_html = f'<div class="alert alert-warning">{alert_message}</div>' if alert_message else ""
+
+    # Link to go back to the main dashboard
+    back_link_html = '<a href="/" class="btn btn-secondary mt-3">Back to Dashboard</a>'
+
+    # Combine all parts into the page content
+    full_content = form_html + alert_html + alerts_html + tips_html + benefits_html + back_link_html
+
+    return page("Farmers' Disaster and Weather Alerts", full_content)
 
 if __name__ == '__main__':
     app.run(debug=True, use_reloader=False, port=5001)
