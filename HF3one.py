@@ -15,6 +15,142 @@ co = cohere.Client(COHERE_API_KEY)
 app = Flask(__name__)
 app.secret_key = os.getenv("FLASK_SECRET_KEY", "supersecretkey")  # Needed for session management
 
+# Language dictionaries for multi-language support
+LANGUAGES = {
+    'en': {
+        'dashboard_title': "MeteoFlow Helper Dashboard",
+        'new_section': "New: Sustainable Development Goals Section Added!",
+        'cards': [
+            {"title": "Educational Q&A", "description": "Ask questions about climate and sustainability.", "btn_text": "Go to Q&A", "link": "/educational"},
+            {"title": "Interactive Quiz", "description": "Test your knowledge with quizzes.", "btn_text": "Take Quiz", "link": "/quiz"},
+            {"title": "Report Issues", "description": "Report environmental issues in your area.", "btn_text": "Report Now", "link": "/report"},
+            {"title": "Eco Tips", "description": "Get daily tips to help the environment.", "btn_text": "View Tips", "link": "/assistant"},
+            {"title": "AI Copilot", "description": "Get eco-safe activity suggestions and emergency prep advice based on your local conditions.", "btn_text": "Open Copilot", "link": "/copilot"},
+            {"title": "Eco Risk Score", "description": "View your personalized eco risk score based on local weather and hazards.", "btn_text": "View Score", "link": "/eco_risk_score"},
+            {"title": "Disaster Prediction & Early Alerts", "description": "Predict floods, droughts, and heatwaves to enable early decision-making and warnings.", "btn_text": "View Predictions", "link": "/disaster_prediction"},
+            {"title": "Weather Alerts", "description": "Check weather and disaster alerts.", "btn_text": "Check Weather", "link": "/weather"},
+            {"title": "Sustainable Development Goals", "description": "Explore the UN Sustainable Development Goals and related resources.", "btn_text": "Explore SDGs", "link": "/sdgs"}
+        ],
+        'emergency': {
+            'title': "Emergency Alert",
+            'description': "Send your last known location to a trusted contact and call emergency services.",
+            'button': "Send Emergency Alert",
+            'geo_not_supported': "Geolocation is not supported by your browser.",
+            'location_error': "Unable to retrieve your location.",
+            'location_update_fail': "Failed to update location.",
+            'location_update_error': "Error sending location."
+        },
+        'language_label': "Language"
+    },
+    'hi': {
+        'dashboard_title': "मेटियोफ्लो हेल्पर डैशबोर्ड",
+        'new_section': "नया: सतत विकास लक्ष्यों का अनुभाग जोड़ा गया!",
+        'cards': [
+            {"title": "शैक्षिक प्रश्नोत्तर", "description": "जलवायु और स्थिरता के बारे में प्रश्न पूछें।", "btn_text": "प्रश्न पूछें", "link": "/educational"},
+            {"title": "इंटरैक्टिव क्विज़", "description": "क्विज़ के साथ अपने ज्ञान का परीक्षण करें।", "btn_text": "क्विज़ लें", "link": "/quiz"},
+            {"title": "समस्याएं रिपोर्ट करें", "description": "अपने क्षेत्र में पर्यावरणीय समस्याओं की रिपोर्ट करें।", "btn_text": "रिपोर्ट करें", "link": "/report"},
+            {"title": "इको टिप्स", "description": "पर्यावरण की मदद के लिए दैनिक सुझाव प्राप्त करें।", "btn_text": "टिप्स देखें", "link": "/assistant"},
+            {"title": "एआई कोपायलट", "description": "अपने स्थानीय परिस्थितियों के आधार पर इको-सेफ गतिविधि सुझाव और आपातकालीन तैयारी सलाह प्राप्त करें।", "btn_text": "कोपायलट खोलें", "link": "/copilot"},
+            {"title": "इको रिस्क स्कोर", "description": "स्थानीय मौसम और खतरों के आधार पर अपना व्यक्तिगत इको रिस्क स्कोर देखें।", "btn_text": "स्कोर देखें", "link": "/eco_risk_score"},
+            {"title": "आपदा पूर्वानुमान और अलर्ट", "description": "जलभराव, सूखा, और हीटवेव की भविष्यवाणी करें।", "btn_text": "पूर्वानुमान देखें", "link": "/disaster_prediction"},
+            {"title": "मौसम अलर्ट", "description": "मौसम और आपदा अलर्ट जांचें।", "btn_text": "मौसम जांचें", "link": "/weather"},
+            {"title": "सतत विकास लक्ष्य", "description": "संयुक्त राष्ट्र सतत विकास लक्ष्यों और संबंधित संसाधनों का अन्वेषण करें।", "btn_text": "एसडीजी देखें", "link": "/sdgs"}
+        ],
+        'emergency': {
+            'title': "आपातकालीन अलर्ट",
+            'description': "अपनी अंतिम ज्ञात स्थिति एक विश्वसनीय संपर्क को भेजें और आपातकालीन सेवाओं को कॉल करें।",
+            'button': "आपातकालीन अलर्ट भेजें",
+            'geo_not_supported': "आपके ब्राउज़र द्वारा जियोलोकेशन समर्थित नहीं है।",
+            'location_error': "आपकी स्थिति प्राप्त करने में असमर्थ।",
+            'location_update_fail': "स्थिति अपडेट करने में विफल।",
+            'location_update_error': "स्थिति भेजने में त्रुटि।"
+        },
+        'language_label': "भाषा"
+    },
+    'mr': {
+        'dashboard_title': "मेटियोफ्लो हेल्पर डॅशबोर्ड",
+        'new_section': "नवीन: शाश्वत विकास उद्दिष्ट विभाग जोडले गेले आहे!",
+        'cards': [
+            {"title": "शैक्षणिक प्रश्नोत्तरे", "description": "हवामान आणि शाश्वततेबद्दल प्रश्न विचारा.", "btn_text": "प्रश्न विचारा", "link": "/educational"},
+            {"title": "परस्परसंवादी क्विझ", "description": "क्विझसह आपले ज्ञान तपासा.", "btn_text": "क्विझ घ्या", "link": "/quiz"},
+            {"title": "समस्या नोंदवा", "description": "आपल्या भागातील पर्यावरणीय समस्या नोंदवा.", "btn_text": "नोंदवा", "link": "/report"},
+            {"title": "इको टिप्स", "description": "पर्यावरणासाठी दररोज टिप्स मिळवा.", "btn_text": "टिप्स पहा", "link": "/assistant"},
+            {"title": "एआय कोपायलट", "description": "आपल्या स्थानिक परिस्थितीवर आधारित इको-सेफ क्रियाकलाप सूचना आणि आपत्कालीन तयारी सल्ला मिळवा.", "btn_text": "कोपायलट उघडा", "link": "/copilot"},
+            {"title": "इको रिस्क स्कोर", "description": "स्थानिक हवामान आणि धोके यावर आधारित आपला वैयक्तिकृत इको रिस्क स्कोर पहा.", "btn_text": "स्कोर पहा", "link": "/eco_risk_score"},
+            {"title": "आपत्ती भाकित आणि अलर्ट", "description": "पूर, दुष्काळ, आणि उष्मायन लाट यांचे भाकित करा.", "btn_text": "भाकित पहा", "link": "/disaster_prediction"},
+            {"title": "हवामान अलर्ट", "description": "हवामान आणि आपत्ती अलर्ट तपासा.", "btn_text": "हवामान तपासा", "link": "/weather"},
+            {"title": "शाश्वत विकास उद्दिष्टे", "description": "संयुक्त राष्ट्र शाश्वत विकास उद्दिष्टे आणि संबंधित संसाधने एक्सप्लोर करा.", "btn_text": "एसडीजी एक्सप्लोर करा", "link": "/sdgs"}
+        ],
+        'emergency': {
+            'title': "आपत्कालीन अलर्ट",
+            'description': "आपली शेवटची ज्ञात स्थिती विश्वसनीय संपर्काला पाठवा आणि आपत्कालीन सेवा कॉल करा.",
+            'button': "आपत्कालीन अलर्ट पाठवा",
+            'geo_not_supported': "आपल्या ब्राउझरद्वारे भू-स्थान उपलब्ध नाही.",
+            'location_error': "आपले स्थान मिळविण्यात अयशस्वी.",
+            'location_update_fail': "स्थान अद्यतनित करण्यात अयशस्वी.",
+            'location_update_error': "स्थान पाठविण्यात त्रुटी."
+        },
+        'language_label': "भाषा"
+    },
+    'kn': {
+        'dashboard_title': "ಮೆಟಿಯೋಫ್ಲೋ ಸಹಾಯಕ ಡ್ಯಾಶ್‌ಬೋರ್ಡ್",
+        'new_section': "ಹೊಸದು: ಸ್ಥಿರ ಅಭಿವೃದ್ಧಿ ಗುರಿಗಳ ವಿಭಾಗ ಸೇರಿಸಲಾಗಿದೆ!",
+        'cards': [
+            {"title": "ಶೈಕ್ಷಣಿಕ ಪ್ರಶ್ನೋತ್ತರ", "description": "ಹವಾಮಾನ ಮತ್ತು ಸ್ಥಿರತೆಯ ಬಗ್ಗೆ ಪ್ರಶ್ನೆಗಳನ್ನು ಕೇಳಿ.", "btn_text": "ಪ್ರಶ್ನೆ ಕೇಳಿ", "link": "/educational"},
+            {"title": "ಇಂಟರಾಕ್ಟಿವ್ ಕ್ವಿಜ್", "description": "ಕ್ವಿಜ್‌ಗಳೊಂದಿಗೆ ನಿಮ್ಮ ಜ್ಞಾನವನ್ನು ಪರೀಕ್ಷಿಸಿ.", "btn_text": "ಕ್ವಿಜ್ ತೆಗೆದುಕೊಳ್ಳಿ", "link": "/quiz"},
+            {"title": "ಸಮಸ್ಯೆಗಳನ್ನು ವರದಿ ಮಾಡಿ", "description": "ನಿಮ್ಮ ಪ್ರದೇಶದ ಪರಿಸರ ಸಮಸ್ಯೆಗಳನ್ನು ವರದಿ ಮಾಡಿ.", "btn_text": "ವರದಿ ಮಾಡಿ", "link": "/report"},
+            {"title": "ಇಕೋ ಟಿಪ್ಸ್", "description": "ಪರಿಸರಕ್ಕೆ ಸಹಾಯ ಮಾಡಲು ದೈನಂದಿನ ಸಲಹೆಗಳು ಪಡೆಯಿರಿ.", "btn_text": "ಟಿಪ್ಸ್ ವೀಕ್ಷಿಸಿ", "link": "/assistant"},
+            {"title": "ಎಐ ಕೋಪೈಲಟ್", "description": "ನಿಮ್ಮ ಸ್ಥಳೀಯ ಪರಿಸ್ಥಿತಿಗಳ ಆಧಾರದ ಮೇಲೆ ಇಕೋ-ಸೇಫ್ ಚಟುವಟಿಕೆ ಸಲಹೆಗಳು ಮತ್ತು ತುರ್ತು ತಯಾರಿ ಸಲಹೆಗಳನ್ನು ಪಡೆಯಿರಿ.", "btn_text": "ಕೋಪೈಲಟ್ ತೆರೆಯಿರಿ", "link": "/copilot"},
+            {"title": "ಇಕೋ ರಿಸ್ಕ್ ಸ್ಕೋರ್", "description": "ಸ್ಥಳೀಯ ಹವಾಮಾನ ಮತ್ತು ಅಪಾಯಗಳ ಆಧಾರದ ಮೇಲೆ ನಿಮ್ಮ ವೈಯಕ್ತಿಕ ಇಕೋ ರಿಸ್ಕ್ ಸ್ಕೋರ್ ಅನ್ನು ವೀಕ್ಷಿಸಿ.", "btn_text": "ಸ್ಕೋರ್ ವೀಕ್ಷಿಸಿ", "link": "/eco_risk_score"},
+            {"title": "ವಿಪತ್ತು ಭವಿಷ್ಯವಾಣಿ ಮತ್ತು ಎಚ್ಚರಿಕೆಗಳು", "description": "ಹೆಚ್ಚು ನೀರು, ಬಿರುಗಾಳಿ ಮತ್ತು ಬಿಸಿಲು ತರಂಗಗಳ ಭವಿಷ್ಯವಾಣಿ ಮಾಡಿ.", "btn_text": "ಭವಿಷ್ಯವಾಣಿ ವೀಕ್ಷಿಸಿ", "link": "/disaster_prediction"},
+            {"title": "ಹವಾಮಾನ ಎಚ್ಚರಿಕೆಗಳು", "description": "ಹವಾಮಾನ ಮತ್ತು ವಿಪತ್ತು ಎಚ್ಚರಿಕೆಗಳನ್ನು ಪರಿಶೀಲಿಸಿ.", "btn_text": "ಹವಾಮಾನ ಪರಿಶೀಲಿಸಿ", "link": "/weather"},
+            {"title": "ಸ್ಥಿರ ಅಭಿವೃದ್ಧಿ ಗುರಿಗಳು", "description": "ಯುಎನ್ ಸ್ಥಿರ ಅಭಿವೃದ್ಧಿ ಗುರಿಗಳು ಮತ್ತು ಸಂಬಂಧಿತ ಸಂಪನ್ಮೂಲಗಳನ್ನು ಅನ್ವೇಷಿಸಿ.", "btn_text": "ಎಸ್‌ಡಿಜಿ ಅನ್ವೇಷಿಸಿ", "link": "/sdgs"}
+        ],
+        'emergency': {
+            'title': "ತುರ್ತು ಎಚ್ಚರಿಕೆ",
+            'description': "ನಿಮ್ಮ ಕೊನೆಯ ತಿಳಿದಿರುವ ಸ್ಥಳವನ್ನು ವಿಶ್ವಾಸಾರ್ಹ ಸಂಪರ್ಕಕ್ಕೆ ಕಳುಹಿಸಿ ಮತ್ತು ತುರ್ತು ಸೇವೆಗಳನ್ನು ಕರೆ ಮಾಡಿ.",
+            'button': "ತುರ್ತು ಎಚ್ಚರಿಕೆ ಕಳುಹಿಸಿ",
+            'geo_not_supported': "ನಿಮ್ಮ ಬ್ರೌಸರ್ ಜಿಯೋಲೊಕೇಶನ್ ಅನ್ನು ಬೆಂಬಲಿಸುವುದಿಲ್ಲ.",
+            'location_error': "ನಿಮ್ಮ ಸ್ಥಳವನ್ನು ಪಡೆಯಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ.",
+            'location_update_fail': "ಸ್ಥಳವನ್ನು ನವೀಕರಿಸಲು ವಿಫಲವಾಗಿದೆ.",
+            'location_update_error': "ಸ್ಥಳವನ್ನು ಕಳುಹಿಸುವಲ್ಲಿ ದೋಷವಿದೆ."
+        },
+        'language_label': "ಭಾಷೆ"
+    },
+    'te': {
+        'dashboard_title': "మెటియోఫ్లో సహాయక డాష్‌బోర్డు",
+        'new_section': "కొత్తది: స్థిరమైన అభివృద్ధి లక్ష్యాల విభాగం జోడించబడింది!",
+        'cards': [
+            {"title": "విద్యా ప్రశ్నలు", "description": "వాతావరణం మరియు స్థిరత్వం గురించి ప్రశ్నలు అడగండి.", "btn_text": "ప్రశ్న అడగండి", "link": "/educational"},
+            {"title": "ఇంటరాక్టివ్ క్విజ్", "description": "క్విజ్‌లతో మీ జ్ఞానాన్ని పరీక్షించండి.", "btn_text": "క్విజ్ తీసుకోండి", "link": "/quiz"},
+            {"title": "సమస్యలను నివేదించండి", "description": "మీ ప్రాంతంలోని పర్యావరణ సమస్యలను నివేదించండి.", "btn_text": "నివేదించండి", "link": "/report"},
+            {"title": "ఇకో సూచనలు", "description": "పర్యావరణానికి సహాయం చేయడానికి రోజువారీ సూచనలు పొందండి.", "btn_text": "సూచనలు చూడండి", "link": "/assistant"},
+            {"title": "ఏఐ కోపైలట్", "description": "మీ స్థానిక పరిస్థితుల ఆధారంగా ఇకో-సేఫ్ కార్యకలాప సూచనలు మరియు అత్యవసర సిద్ధత సలహాలు పొందండి.", "btn_text": "కోపైలట్ తెరవండి", "link": "/copilot"},
+            {"title": "ఇకో రిస్క్ స్కోర్", "description": "స్థానిక వాతావరణం మరియు ప్రమాదాల ఆధారంగా మీ వ్యక్తిగత ఇకో రిస్క్ స్కోర్‌ను చూడండి.", "btn_text": "స్కోర్ చూడండి", "link": "/eco_risk_score"},
+            {"title": "విపత్తు అంచనాలు మరియు హెచ్చరికలు", "description": "పొంగువ, ఎండ, మరియు ఎండల తరంగాలను అంచనా వేయండి.", "btn_text": "అంచనాలు చూడండి", "link": "/disaster_prediction"},
+            {"title": "వాతావరణ హెచ్చరికలు", "description": "వాతావరణం మరియు విపత్తు హెచ్చరికలను తనిఖీ చేయండి.", "btn_text": "వాతావరణం తనిఖీ చేయండి", "link": "/weather"},
+            {"title": "స్థిర అభివృద్ధి లక్ష్యాలు", "description": "యుఎన్ స్థిర అభివృద్ధి లక్ష్యాలు మరియు సంబంధిత వనరులను అన్వేషించండి.", "btn_text": "ఎస్‌డిజి అన్వేషించండి", "link": "/sdgs"}
+        ],
+        'emergency': {
+            'title': "అత్యవసర హెచ్చరిక",
+            'description': "మీ చివరి తెలిసిన స్థానాన్ని విశ్వసనీయ సంప్రదింపుకు పంపండి మరియు అత్యవసర సేవలను కాల్ చేయండి.",
+            'button': "అత్యవసర హెచ్చరిక పంపండి",
+            'geo_not_supported': "మీ బ్రౌజర్ జియోలొకేషన్‌ను మద్దతు ఇవ్వదు.",
+            'location_error': "మీ స్థానాన్ని పొందలేకపోయారు.",
+            'location_update_fail': "స్థానాన్ని నవీకరించడంలో విఫలమైంది.",
+            'location_update_error': "స్థానాన్ని పంపడంలో లోపం."
+        },
+        'language_label': "భాష"
+    }
+}
+
+@app.route('/set_language')
+def set_language():
+    lang_code = request.args.get('lang')
+    if lang_code in LANGUAGES:
+        session['lang'] = lang_code
+    return redirect(request.referrer or url_for('home'))
+
 DATABASE = 'app.db'
 
 def get_db():
@@ -332,63 +468,10 @@ def query_model(prompt, max_tokens=512):
 def home():
     if 'username' not in session:
         return redirect(url_for('login'))
-    cards = [
-        {
-            "title": "Educational Q&A",
-            "description": "Ask questions about climate and sustainability.",
-            "link": "/educational",
-            "btn_text": "Go to Q&A"
-        },
-        {
-            "title": "Interactive Quiz",
-            "description": "Test your knowledge with quizzes.",
-            "link": "/quiz",
-            "btn_text": "Take Quiz"
-        },
-        {
-            "title": "Report Issues",
-            "description": "Report environmental issues in your area.",
-            "link": "/report",
-            "btn_text": "Report Now"
-        },
-    {
-        "title": "Eco Tips",
-        "description": "Get daily tips to help the environment.",
-        "link": "/assistant",
-        "btn_text": "View Tips"
-    },
-    {
-        "title": "AI Copilot",
-        "description": "Get eco-safe activity suggestions and emergency prep advice based on your local conditions.",
-        "link": "/copilot",
-        "btn_text": "Open Copilot"
-    },
-    {
-        "title": "Eco Risk Score",
-        "description": "View your personalized eco risk score based on local weather and hazards.",
-        "link": "/eco_risk_score",
-        "btn_text": "View Score"
-    },
-    {
-        "title": "Disaster Prediction & Early Alerts",
-        "description": "Predict floods, droughts, and heatwaves to enable early decision-making and warnings.",
-        "link": "/disaster_prediction",
-        "btn_text": "View Predictions"
-    },
-        {
-            "title": "Weather Alerts",
-            "description": "Check weather and disaster alerts.",
-            "link": "/weather",
-            "btn_text": "Check Weather"
-        },
-        {
-            "title": "Sustainable Development Goals",
-            "description": "Explore the UN Sustainable Development Goals and related resources.",
-            "link": "/sdgs",
-            "btn_text": "Explore SDGs"
-        }
-    ]
-    banner_html = '<div class="alert alert-info text-center mb-4"><strong>New:</strong> Sustainable Development Goals Section Added!</div>'
+    lang = session.get('lang', 'en')
+    lang_data = LANGUAGES.get(lang, LANGUAGES['en'])
+    cards = lang_data['cards']
+    banner_html = f'<div class="alert alert-info text-center mb-4"><strong>New:</strong> {lang_data["new_section"]}</div>'
     card_html = ""
     for card in cards:
         card_html += f'''
@@ -398,7 +481,23 @@ def home():
             <a href="{card["link"]}" class="btn btn-success">{card["btn_text"]}</a>
         </div>
         '''
-    return page("MeteoFlow Helper Dashboard", banner_html + card_html)
+    # Language selector dropdown
+    language_selector = f'''
+    <div class="mb-3 text-end">
+        <form method="get" action="/set_language" id="languageForm">
+            <label for="languageSelect" class="form-label me-2">{lang_data["language_label"]}:</label>
+            <select id="languageSelect" name="lang" onchange="document.getElementById('languageForm').submit();" class="form-select d-inline-block w-auto">
+                <option value="en" {"selected" if lang == "en" else ""}>English</option>
+                <option value="hi" {"selected" if lang == "hi" else ""}>हिन्दी</option>
+                <option value="mr" {"selected" if lang == "mr" else ""}>मराठी</option>
+                <option value="kn" {"selected" if lang == "kn" else ""}>ಕನ್ನಡ</option>
+                <option value="te" {"selected" if lang == "te" else ""}>తెలుగు</option>
+            </select>
+        </form>
+    </div>
+    '''
+    full_content = language_selector + banner_html + card_html
+    return page(lang_data['dashboard_title'], full_content)
 
 
 @app.route('/educational', methods=['GET', 'POST'])
@@ -1481,6 +1580,51 @@ def disaster_prediction():
     """
 
     return page("Disaster Prediction & Early Alerts", content)
+
+import os
+
+TRUSTED_CONTACT_EMAIL = os.getenv("TRUSTED_CONTACT_EMAIL", "trustedperson@example.com")
+EMERGENCY_PHONE_NUMBER = os.getenv("EMERGENCY_PHONE_NUMBER", "+1234567890")
+
+from flask import jsonify
+
+@app.route('/update_location', methods=['POST'])
+def update_location():
+    if 'username' not in session:
+        return jsonify({"error": "Unauthorized"}), 401
+    data = request.get_json()
+    location = data.get('location')
+    if not location:
+        return jsonify({"error": "Location is required"}), 400
+    username = session['username']
+    db = get_db()
+    cursor = db.cursor()
+    # Store location as user activity with prefix 'location:'
+    cursor.execute('INSERT INTO user_activity (username, activity_type) VALUES (?, ?)', (username, f'location:{location}'))
+    db.commit()
+    return jsonify({"message": "Location updated successfully"})
+
+@app.route('/emergency', methods=['POST'])
+def emergency():
+    if 'username' not in session:
+        return jsonify({"error": "Unauthorized"}), 401
+    username = session['username']
+    db = get_db()
+    cursor = db.cursor()
+    # Get last known location for user
+    cursor.execute("SELECT activity_type FROM user_activity WHERE username = ? AND activity_type LIKE 'location:%' ORDER BY activity_time DESC LIMIT 1", (username,))
+    row = cursor.fetchone()
+    location = row['activity_type'].split(':', 1)[1] if row else "Unknown"
+    # Compose emergency message
+    subject = f"Emergency Alert for User: {username}"
+    message = f"User {username} has triggered an emergency alert.\nLast known location: {location}\nPlease take immediate action."
+    # Send email to trusted contact
+    send_email_alert(subject, message, recipients=[TRUSTED_CONTACT_EMAIL])
+    # Return emergency phone number to client for calling
+    return jsonify({
+        "message": "Emergency alert sent to trusted contact.",
+        "emergency_phone_number": EMERGENCY_PHONE_NUMBER
+    })
 
 if __name__ == '__main__':
     app.run(debug=True, use_reloader=False, port=5001)
