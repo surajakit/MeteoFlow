@@ -20,17 +20,16 @@ LANGUAGES = {
     'en': {
         'dashboard_title': "MeteoFlow Helper Dashboard",
         'new_section': "New: Sustainable Development Goals Section Added!",
-        'cards': [
-            {"title": "Educational Q&A", "description": "Ask questions about climate and sustainability.", "btn_text": "Go to Q&A", "link": "/educational"},
-            {"title": "Interactive Quiz", "description": "Test your knowledge with quizzes.", "btn_text": "Take Quiz", "link": "/quiz"},
-            {"title": "Report Issues", "description": "Report environmental issues in your area.", "btn_text": "Report Now", "link": "/report"},
-            {"title": "Eco Tips", "description": "Get daily tips to help the environment.", "btn_text": "View Tips", "link": "/assistant"},
-            {"title": "AI Copilot", "description": "Get eco-safe activity suggestions and emergency prep advice based on your local conditions.", "btn_text": "Open Copilot", "link": "/copilot"},
-            {"title": "Eco Risk Score", "description": "View your personalized eco risk score based on local weather and hazards.", "btn_text": "View Score", "link": "/eco_risk_score"},
-            {"title": "Disaster Prediction & Early Alerts", "description": "Predict floods, droughts, and heatwaves to enable early decision-making and warnings.", "btn_text": "View Predictions", "link": "/disaster_prediction"},
-            {"title": "Weather Alerts", "description": "Check weather and disaster alerts.", "btn_text": "Check Weather", "link": "/weather"},
-            {"title": "Sustainable Development Goals", "description": "Explore the UN Sustainable Development Goals and related resources.", "btn_text": "Explore SDGs", "link": "/sdgs"}
-        ],
+    'cards': [
+        {"title": "Educational Q&A", "description": "Ask questions about climate and sustainability.", "btn_text": "Go to Q&A", "link": "/educational"},
+        {"title": "Interactive Quiz", "description": "Test your knowledge with quizzes.", "btn_text": "Take Quiz", "link": "/quiz"},
+        {"title": "Report Issues", "description": "Report environmental issues in your area.", "btn_text": "Report Now", "link": "/report"},
+        {"title": "Eco Tips", "description": "Get daily tips to help the environment.", "btn_text": "View Tips", "link": "/assistant"},
+        {"title": "AI Copilot", "description": "Get eco-safe activity suggestions and emergency prep advice based on your local conditions.", "btn_text": "Open Copilot", "link": "/copilot"},
+        {"title": "Eco Risk Score", "description": "View your personalized eco risk score based on local weather and hazards.", "btn_text": "View Score", "link": "/eco_risk_score"},
+        {"title": "Disaster Prediction & Early Alerts", "description": "Predict floods, droughts, and heatwaves to enable early decision-making and warnings.", "btn_text": "View Predictions", "link": "/disaster_prediction"},
+        {"title": "Weather Alerts", "description": "Check weather and disaster alerts.", "btn_text": "Check Weather", "link": "/weather"}
+    ],
         'emergency': {
             'title': "Emergency Alert",
             'description': "Send your last known location to a trusted contact and call emergency services.",
@@ -45,7 +44,7 @@ LANGUAGES = {
     'hi': {
         'dashboard_title': "मेटियोफ्लो हेल्पर डैशबोर्ड",
         'new_section': "नया: सतत विकास लक्ष्यों का अनुभाग जोड़ा गया!",
-        'cards': [
+    'cards': [
             {"title": "शैक्षिक प्रश्नोत्तर", "description": "जलवायु और स्थिरता के बारे में प्रश्न पूछें।", "btn_text": "प्रश्न पूछें", "link": "/educational"},
             {"title": "इंटरैक्टिव क्विज़", "description": "क्विज़ के साथ अपने ज्ञान का परीक्षण करें।", "btn_text": "क्विज़ लें", "link": "/quiz"},
             {"title": "समस्याएं रिपोर्ट करें", "description": "अपने क्षेत्र में पर्यावरणीय समस्याओं की रिपोर्ट करें।", "btn_text": "रिपोर्ट करें", "link": "/report"},
@@ -53,8 +52,7 @@ LANGUAGES = {
             {"title": "एआई कोपायलट", "description": "अपने स्थानीय परिस्थितियों के आधार पर इको-सेफ गतिविधि सुझाव और आपातकालीन तैयारी सलाह प्राप्त करें।", "btn_text": "कोपायलट खोलें", "link": "/copilot"},
             {"title": "इको रिस्क स्कोर", "description": "स्थानीय मौसम और खतरों के आधार पर अपना व्यक्तिगत इको रिस्क स्कोर देखें।", "btn_text": "स्कोर देखें", "link": "/eco_risk_score"},
             {"title": "आपदा पूर्वानुमान और अलर्ट", "description": "जलभराव, सूखा, और हीटवेव की भविष्यवाणी करें।", "btn_text": "पूर्वानुमान देखें", "link": "/disaster_prediction"},
-            {"title": "मौसम अलर्ट", "description": "मौसम और आपदा अलर्ट जांचें।", "btn_text": "मौसम जांचें", "link": "/weather"},
-            {"title": "सतत विकास लक्ष्य", "description": "संयुक्त राष्ट्र सतत विकास लक्ष्यों और संबंधित संसाधनों का अन्वेषण करें।", "btn_text": "एसडीजी देखें", "link": "/sdgs"}
+            {"title": "मौसम अलर्ट", "description": "मौसम और आपदा अलर्ट जांचें।", "btn_text": "मौसम जांचें", "link": "/weather"}
         ],
         'emergency': {
             'title': "आपातकालीन अलर्ट",
@@ -70,7 +68,7 @@ LANGUAGES = {
     'mr': {
         'dashboard_title': "मेटियोफ्लो हेल्पर डॅशबोर्ड",
         'new_section': "नवीन: शाश्वत विकास उद्दिष्ट विभाग जोडले गेले आहे!",
-        'cards': [
+    'cards': [
             {"title": "शैक्षणिक प्रश्नोत्तरे", "description": "हवामान आणि शाश्वततेबद्दल प्रश्न विचारा.", "btn_text": "प्रश्न विचारा", "link": "/educational"},
             {"title": "परस्परसंवादी क्विझ", "description": "क्विझसह आपले ज्ञान तपासा.", "btn_text": "क्विझ घ्या", "link": "/quiz"},
             {"title": "समस्या नोंदवा", "description": "आपल्या भागातील पर्यावरणीय समस्या नोंदवा.", "btn_text": "नोंदवा", "link": "/report"},
@@ -78,8 +76,7 @@ LANGUAGES = {
             {"title": "एआय कोपायलट", "description": "आपल्या स्थानिक परिस्थितीवर आधारित इको-सेफ क्रियाकलाप सूचना आणि आपत्कालीन तयारी सल्ला मिळवा.", "btn_text": "कोपायलट उघडा", "link": "/copilot"},
             {"title": "इको रिस्क स्कोर", "description": "स्थानिक हवामान आणि धोके यावर आधारित आपला वैयक्तिकृत इको रिस्क स्कोर पहा.", "btn_text": "स्कोर पहा", "link": "/eco_risk_score"},
             {"title": "आपत्ती भाकित आणि अलर्ट", "description": "पूर, दुष्काळ, आणि उष्मायन लाट यांचे भाकित करा.", "btn_text": "भाकित पहा", "link": "/disaster_prediction"},
-            {"title": "हवामान अलर्ट", "description": "हवामान आणि आपत्ती अलर्ट तपासा.", "btn_text": "हवामान तपासा", "link": "/weather"},
-            {"title": "शाश्वत विकास उद्दिष्टे", "description": "संयुक्त राष्ट्र शाश्वत विकास उद्दिष्टे आणि संबंधित संसाधने एक्सप्लोर करा.", "btn_text": "एसडीजी एक्सप्लोर करा", "link": "/sdgs"}
+            {"title": "हवामान अलर्ट", "description": "हवामान आणि आपत्ती अलर्ट तपासा.", "btn_text": "हवामान तपासा", "link": "/weather"}
         ],
         'emergency': {
             'title': "आपत्कालीन अलर्ट",
@@ -95,7 +92,7 @@ LANGUAGES = {
     'kn': {
         'dashboard_title': "ಮೆಟಿಯೋಫ್ಲೋ ಸಹಾಯಕ ಡ್ಯಾಶ್‌ಬೋರ್ಡ್",
         'new_section': "ಹೊಸದು: ಸ್ಥಿರ ಅಭಿವೃದ್ಧಿ ಗುರಿಗಳ ವಿಭಾಗ ಸೇರಿಸಲಾಗಿದೆ!",
-        'cards': [
+    'cards': [
             {"title": "ಶೈಕ್ಷಣಿಕ ಪ್ರಶ್ನೋತ್ತರ", "description": "ಹವಾಮಾನ ಮತ್ತು ಸ್ಥಿರತೆಯ ಬಗ್ಗೆ ಪ್ರಶ್ನೆಗಳನ್ನು ಕೇಳಿ.", "btn_text": "ಪ್ರಶ್ನೆ ಕೇಳಿ", "link": "/educational"},
             {"title": "ಇಂಟರಾಕ್ಟಿವ್ ಕ್ವಿಜ್", "description": "ಕ್ವಿಜ್‌ಗಳೊಂದಿಗೆ ನಿಮ್ಮ ಜ್ಞಾನವನ್ನು ಪರೀಕ್ಷಿಸಿ.", "btn_text": "ಕ್ವಿಜ್ ತೆಗೆದುಕೊಳ್ಳಿ", "link": "/quiz"},
             {"title": "ಸಮಸ್ಯೆಗಳನ್ನು ವರದಿ ಮಾಡಿ", "description": "ನಿಮ್ಮ ಪ್ರದೇಶದ ಪರಿಸರ ಸಮಸ್ಯೆಗಳನ್ನು ವರದಿ ಮಾಡಿ.", "btn_text": "ವರದಿ ಮಾಡಿ", "link": "/report"},
@@ -103,8 +100,7 @@ LANGUAGES = {
             {"title": "ಎಐ ಕೋಪೈಲಟ್", "description": "ನಿಮ್ಮ ಸ್ಥಳೀಯ ಪರಿಸ್ಥಿತಿಗಳ ಆಧಾರದ ಮೇಲೆ ಇಕೋ-ಸೇಫ್ ಚಟುವಟಿಕೆ ಸಲಹೆಗಳು ಮತ್ತು ತುರ್ತು ತಯಾರಿ ಸಲಹೆಗಳನ್ನು ಪಡೆಯಿರಿ.", "btn_text": "ಕೋಪೈಲಟ್ ತೆರೆಯಿರಿ", "link": "/copilot"},
             {"title": "ಇಕೋ ರಿಸ್ಕ್ ಸ್ಕೋರ್", "description": "ಸ್ಥಳೀಯ ಹವಾಮಾನ ಮತ್ತು ಅಪಾಯಗಳ ಆಧಾರದ ಮೇಲೆ ನಿಮ್ಮ ವೈಯಕ್ತಿಕ ಇಕೋ ರಿಸ್ಕ್ ಸ್ಕೋರ್ ಅನ್ನು ವೀಕ್ಷಿಸಿ.", "btn_text": "ಸ್ಕೋರ್ ವೀಕ್ಷಿಸಿ", "link": "/eco_risk_score"},
             {"title": "ವಿಪತ್ತು ಭವಿಷ್ಯವಾಣಿ ಮತ್ತು ಎಚ್ಚರಿಕೆಗಳು", "description": "ಹೆಚ್ಚು ನೀರು, ಬಿರುಗಾಳಿ ಮತ್ತು ಬಿಸಿಲು ತರಂಗಗಳ ಭವಿಷ್ಯವಾಣಿ ಮಾಡಿ.", "btn_text": "ಭವಿಷ್ಯವಾಣಿ ವೀಕ್ಷಿಸಿ", "link": "/disaster_prediction"},
-            {"title": "ಹವಾಮಾನ ಎಚ್ಚರಿಕೆಗಳು", "description": "ಹವಾಮಾನ ಮತ್ತು ವಿಪತ್ತು ಎಚ್ಚರಿಕೆಗಳನ್ನು ಪರಿಶೀಲಿಸಿ.", "btn_text": "ಹವಾಮಾನ ಪರಿಶೀಲಿಸಿ", "link": "/weather"},
-            {"title": "ಸ್ಥಿರ ಅಭಿವೃದ್ಧಿ ಗುರಿಗಳು", "description": "ಯುಎನ್ ಸ್ಥಿರ ಅಭಿವೃದ್ಧಿ ಗುರಿಗಳು ಮತ್ತು ಸಂಬಂಧಿತ ಸಂಪನ್ಮೂಲಗಳನ್ನು ಅನ್ವೇಷಿಸಿ.", "btn_text": "ಎಸ್‌ಡಿಜಿ ಅನ್ವೇಷಿಸಿ", "link": "/sdgs"}
+            {"title": "ಹವಾಮಾನ ಎಚ್ಚರಿಕೆಗಳು", "description": "ಹವಾಮಾನ ಮತ್ತು ವಿಪತ್ತು ಎಚ್ಚರಿಕೆಗಳನ್ನು ಪರಿಶೀಲಿಸಿ.", "btn_text": "ಹವಾಮಾನ ಪರಿಶೀಲಿಸಿ", "link": "/weather"}
         ],
         'emergency': {
             'title': "ತುರ್ತು ಎಚ್ಚರಿಕೆ",
@@ -194,6 +190,45 @@ def init_db():
                 report_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP
             )
         ''')
+
+        cursor.execute('''
+            CREATE TABLE IF NOT EXISTS fields (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                user_id TEXT NOT NULL,
+                field_name TEXT,
+                latitude REAL NOT NULL,
+                longitude REAL NOT NULL,
+                crop_type TEXT NOT NULL,
+                crop_stage TEXT NOT NULL,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            )
+        ''')
+
+        cursor.execute('''
+            CREATE TABLE IF NOT EXISTS damage_reports (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                user_id TEXT NOT NULL,
+                field_id INTEGER NOT NULL,
+                damage_type TEXT NOT NULL,
+                photo_path TEXT,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                FOREIGN KEY(field_id) REFERENCES fields(id)
+            )
+        ''')
+
+        cursor.execute('''
+            CREATE TABLE IF NOT EXISTS sms_reminders (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                user_id TEXT NOT NULL,
+                field_id INTEGER NOT NULL,
+                alert_type TEXT NOT NULL,
+                phone_number TEXT NOT NULL,
+                active INTEGER DEFAULT 1,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                FOREIGN KEY(field_id) REFERENCES fields(id)
+            )
+        ''')
+
         db.commit()
 
 init_db()
@@ -230,20 +265,26 @@ def page(title, body):
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
+            line-height: 1.6;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }}
         .navbar {{
             background-color: {nav_bg};
+            transition: background-color 0.3s ease;
         }}
         .navbar-brand, .nav-link {{
             color: {nav_link_color} !important;
             font-weight: 600;
+            transition: color 0.3s ease;
         }}
         .nav-link:hover {{
             color: {nav_link_hover} !important;
+            text-decoration: underline;
         }}
         .container {{
             max-width: 1200px;
             margin-top: 2rem;
+            padding: 0 1rem;
         }}
         .dashboard {{
             display: grid;
@@ -252,18 +293,23 @@ def page(title, body):
         }}
         .card {{
             background: {card_bg};
-            border-radius: 10px;
+            border-radius: 12px;
             box-shadow: {card_shadow};
             padding: 1.5rem;
-            transition: transform 0.2s ease-in-out;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            color: {text_color};
+            border: 1px solid transparent;
         }}
         .card:hover {{
-            transform: translateY(-5px);
+            transform: translateY(-8px);
             box-shadow: {card_shadow_hover};
+            border-color: {nav_link_hover};
         }}
         h1 {{
             color: {text_color};
             margin-bottom: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 1px;
         }}
         footer {{
             margin-top: 3rem;
@@ -272,18 +318,35 @@ def page(title, body):
             font-size: 0.9rem;
             padding: 1rem 0;
             border-top: 1px solid #ccc;
+            transition: color 0.3s ease;
         }}
         button, input, textarea {{
-            border-radius: 5px;
+            border-radius: 6px;
             border: 1px solid #ccc;
-            padding: 10px;
+            padding: 12px;
             font-size: 1rem;
             width: 100%;
             max-width: 600px;
             margin: 0.5rem 0;
+            background-color: {card_bg};
+            color: {text_color};
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }}
+        button:hover {{
+            background-color: {nav_link_hover};
+            color: {card_bg};
+            border-color: {nav_link_hover};
+            cursor: pointer;
+        }}
+        input:focus, textarea:focus {{
+            outline: none;
+            border-color: {nav_link_hover};
+            box-shadow: 0 0 5px {nav_link_hover};
+            background-color: {card_bg};
+            color: {text_color};
         }}
         textarea {{
-            height: 80px;
+            height: 100px;
             resize: vertical;
         }}
         .dark-mode-toggle {{
@@ -291,6 +354,27 @@ def page(title, body):
             top: 1rem;
             right: 1rem;
             z-index: 1050;
+            border-radius: 50%;
+            padding: 0.5rem 0.7rem;
+            font-weight: 600;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }}
+        .dark-mode-toggle:hover {{
+            background-color: {nav_link_hover};
+            color: {card_bg};
+            cursor: pointer;
+        }}
+        @media (max-width: 576px) {{
+            .dashboard {{
+                grid-template-columns: 1fr;
+            }}
+            .container {{
+                padding: 0 0.5rem;
+            }}
+            button, input, textarea {{
+                max-width: 100%;
+            }}
         }}
     </style>
 </head>
@@ -376,7 +460,7 @@ def news():
     live_video_html = """
     <h2>Live Weather and Disaster Video</h2>
     <div class="ratio ratio-16x9 mb-4">
-        <iframe src="https://www.youtube.com/embed/De5KQEDX41g?si=C4iXoGD15DWQBHJd" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen" title="Live Weather News" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/De5KQEDX41g?si=C4iXoGD15DWQBHJd" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
     </div>
     """
 
@@ -488,6 +572,7 @@ def home():
             <label for="languageSelect" class="form-label me-2">{lang_data["language_label"]}:</label>
             <select id="languageSelect" name="lang" onchange="document.getElementById('languageForm').submit();" class="form-select d-inline-block w-auto">
                 <option value="en" {"selected" if lang == "en" else ""}>English</option>
+                <option value="pa" {"selected" if lang == "pa" else ""}>ਪੰਜਾਬੀ</option>
                 <option value="hi" {"selected" if lang == "hi" else ""}>हिन्दी</option>
                 <option value="mr" {"selected" if lang == "mr" else ""}>मराठी</option>
                 <option value="kn" {"selected" if lang == "kn" else ""}>ಕನ್ನಡ</option>
@@ -1052,178 +1137,6 @@ def weather_agriculture():
     return page("Agricultural Weather Forecast", form + alert_html + alerts_html + back_link)
 
 
-@app.route('/sdgs')
-def sdgs():
-    sdg_list = [
-        "No Poverty",
-        "Zero Hunger",
-        "Good Health & well-Being",
-        "Quality Education",
-        "Gender Equality",
-        "Clean Water & Sanitation",
-        "Affordable & Clean Energy",
-        "Decent Work & Economic Growth",
-        "Industry, Innovation & Infrastructure",
-        "Reduced Inequalities",
-        "Responsible Consumption & Production",
-        "Sustainable Cities and Communities",
-        "Climate Action",
-        "Life Below Water",
-        "Life on Land",
-        "Peace, Justice and Strong Institutions"
-    ]
-    sdg_cards = ""
-    for sdg in sdg_list:
-        sdg_cards += f'''
-        <div class="card">
-            <h3>{sdg}</h3>
-            <p>Learn about {sdg} and explore related resources and tools.</p>
-            <a href="/sdgs/{sdg.replace(' ', '_').replace('&', 'and').replace(',', '')}" class="btn btn-primary">Explore</a>
-        </div>
-        '''
-    return page("UN Sustainable Development Goals", sdg_cards)
-
-@app.route('/sdgs/<sdg_name>')
-def sdg_detail(sdg_name):
-    sdg_display_name = sdg_name.replace('_', ' ').replace('and', '&')
-
-    sdg_details = {
-        "No Poverty": {
-            "description": "End poverty in all its forms everywhere.",
-            "resources": [
-                {"name": "UN SDG No Poverty", "url": "https://sdgs.un.org/goals/goal1"},
-                {"name": "World Bank Poverty Overview", "url": "https://www.worldbank.org/en/topic/poverty/overview"}
-            ]
-        },
-        "Zero Hunger": {
-            "description": "End hunger, achieve food security and improved nutrition, and promote sustainable agriculture.",
-            "resources": [
-                {"name": "UN SDG Zero Hunger", "url": "https://sdgs.un.org/goals/goal2"},
-                {"name": "FAO Food Security", "url": "https://www.fao.org/food-security/en/"}
-            ]
-        },
-        "Good Health & well-Being": {
-            "description": "Ensure healthy lives and promote well-being for all at all ages.",
-            "resources": [
-                {"name": "UN SDG Good Health", "url": "https://sdgs.un.org/goals/goal3"},
-                {"name": "WHO Health Topics", "url": "https://www.who.int/health-topics"}
-            ]
-        },
-        "Quality Education": {
-            "description": "Ensure inclusive and equitable quality education and promote lifelong learning opportunities for all.",
-            "resources": [
-                {"name": "UN SDG Quality Education", "url": "https://sdgs.un.org/goals/goal4"},
-                {"name": "UNESCO Education", "url": "https://en.unesco.org/themes/education"}
-            ]
-        },
-        "Gender Equality": {
-            "description": "Achieve gender equality and empower all women and girls.",
-            "resources": [
-                {"name": "UN SDG Gender Equality", "url": "https://sdgs.un.org/goals/goal5"},
-                {"name": "UN Women", "url": "https://www.unwomen.org/en"}
-            ]
-        },
-        "Clean Water & Sanitation": {
-            "description": "Ensure availability and sustainable management of water and sanitation for all.",
-            "resources": [
-                {"name": "UN SDG Clean Water", "url": "https://sdgs.un.org/goals/goal6"},
-                {"name": "UN Water", "url": "https://www.unwater.org/"}
-            ]
-        },
-        "Affordable & Clean Energy": {
-            "description": "Ensure access to affordable, reliable, sustainable and modern energy for all.",
-            "resources": [
-                {"name": "UN SDG Clean Energy", "url": "https://sdgs.un.org/goals/goal7"},
-                {"name": "IRENA", "url": "https://www.irena.org/"}
-            ]
-        },
-        "Decent Work & Economic Growth": {
-            "description": "Promote sustained, inclusive and sustainable economic growth, full and productive employment and decent work for all.",
-            "resources": [
-                {"name": "UN SDG Decent Work", "url": "https://sdgs.un.org/goals/goal8"},
-                {"name": "ILO", "url": "https://www.ilo.org/global/lang--en/index.htm"}
-            ]
-        },
-        "Industry, Innovation & Infrastructure": {
-            "description": "Build resilient infrastructure, promote inclusive and sustainable industrialization and foster innovation.",
-            "resources": [
-                {"name": "UN SDG Industry", "url": "https://sdgs.un.org/goals/goal9"},
-                {"name": "UNIDO", "url": "https://www.unido.org/"}
-            ]
-        },
-        "Reduced Inequalities": {
-            "description": "Reduce inequality within and among countries.",
-            "resources": [
-                {"name": "UN SDG Reduced Inequalities", "url": "https://sdgs.un.org/goals/goal10"},
-                {"name": "UN DESA", "url": "https://www.un.org/development/desa/en/"}
-            ]
-        },
-        "Responsible Consumption & Production": {
-            "description": "Ensure sustainable consumption and production patterns.",
-            "resources": [
-                {"name": "UN SDG Responsible Consumption", "url": "https://sdgs.un.org/goals/goal12"},
-                {"name": "UNEP", "url": "https://www.unep.org/"}
-            ]
-        },
-        "Sustainable Cities and Communities": {
-            "description": "Make cities and human settlements inclusive, safe, resilient and sustainable.",
-            "resources": [
-                {"name": "UN SDG Sustainable Cities", "url": "https://sdgs.un.org/goals/goal11"},
-                {"name": "UN Habitat", "url": "https://unhabitat.org/"}
-            ]
-        },
-        "Climate Action": {
-            "description": "Take urgent action to combat climate change and its impacts.",
-            "resources": [
-                {"name": "UN SDG Climate Action", "url": "https://sdgs.un.org/goals/goal13"},
-                {"name": "UNFCCC", "url": "https://unfccc.int/"}
-            ]
-        },
-        "Life Below Water": {
-            "description": "Conserve and sustainably use the oceans, seas and marine resources for sustainable development.",
-            "resources": [
-                {"name": "UN SDG Life Below Water", "url": "https://sdgs.un.org/goals/goal14"},
-                {"name": "UN Ocean", "url": "https://www.un.org/en/our-work/oceans"}
-            ]
-        },
-        "Life on Land": {
-            "description": "Protect, restore and promote sustainable use of terrestrial ecosystems, sustainably manage forests, combat desertification, and halt and reverse land degradation and halt biodiversity loss.",
-            "resources": [
-                {"name": "UN SDG Life on Land", "url": "https://sdgs.un.org/goals/goal15"},
-                {"name": "UNEP Biodiversity", "url": "https://www.unep.org/explore-topics/biodiversity"}
-            ]
-        },
-        "Peace, Justice and Strong Institutions": {
-            "description": "Promote peaceful and inclusive societies for sustainable development, provide access to justice for all and build effective, accountable and inclusive institutions at all levels.",
-            "resources": [
-                {"name": "UN SDG Peace and Justice", "url": "https://sdgs.un.org/goals/goal16"},
-                {"name": "UNODC", "url": "https://www.unodc.org/"}
-            ]
-        }
-    }
-
-    sdg_info = sdg_details.get(sdg_display_name, None)
-    if sdg_info:
-        resources_html = "<ul>"
-        for res in sdg_info["resources"]:
-            resources_html += f'<li><a href="{res["url"]}" target="_blank" rel="noopener">{res["name"]}</a></li>'
-        resources_html += "</ul>"
-
-        content = f"""
-        <h2>{sdg_display_name}</h2>
-        <p>{sdg_info['description']}</p>
-        <h3>Resources</h3>
-        {resources_html}
-        <a href="/sdgs" class="btn btn-secondary mt-3">Back to SDGs</a>
-        """
-    else:
-        content = f"""
-        <h2>{sdg_display_name}</h2>
-        <p>Information about this SDG is not available yet.</p>
-        <a href="/sdgs" class="btn btn-secondary mt-3">Back to SDGs</a>
-        """
-
-    return page(f"SDG: {sdg_display_name}", content)
 
 @app.route('/farmers', methods=['GET', 'POST'])
 def farmers():
@@ -1626,5 +1539,612 @@ def emergency():
         "emergency_phone_number": EMERGENCY_PHONE_NUMBER
     })
 
-if __name__ == '__main__':
-    app.run(debug=True, use_reloader=False, port=5001)
+import json
+from werkzeug.utils import secure_filename
+from flask import flash
+
+# Add new database tables for fields, damage reports, SMS reminders, and community stories
+def init_additional_db_tables():
+    with app.app_context():
+        db = get_db()
+        cursor = db.cursor()
+        cursor.execute('''
+            CREATE TABLE IF NOT EXISTS fields (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                user_id TEXT NOT NULL,
+                field_name TEXT,
+                latitude REAL NOT NULL,
+                longitude REAL NOT NULL,
+                crop_type TEXT NOT NULL,
+                crop_stage TEXT NOT NULL,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            )
+        ''')
+        cursor.execute('''
+            CREATE TABLE IF NOT EXISTS damage_reports (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                user_id TEXT NOT NULL,
+                field_id INTEGER NOT NULL,
+                damage_type TEXT NOT NULL,
+                photo_path TEXT,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                FOREIGN KEY(field_id) REFERENCES fields(id)
+            )
+        ''')
+        cursor.execute('''
+            CREATE TABLE IF NOT EXISTS sms_reminders (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                user_id TEXT NOT NULL,
+                field_id INTEGER NOT NULL,
+                alert_type TEXT NOT NULL,
+                phone_number TEXT NOT NULL,
+                active INTEGER DEFAULT 1,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                FOREIGN KEY(field_id) REFERENCES fields(id)
+            )
+        ''')
+        cursor.execute('''
+            CREATE TABLE IF NOT EXISTS community_stories (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                user_id TEXT NOT NULL,
+                story TEXT NOT NULL,
+                video_url TEXT,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            )
+        ''')
+        db.commit()
+
+init_additional_db_tables()
+
+# New database tables for additional features
+def init_new_features_db_tables():
+    with app.app_context():
+        db = get_db()
+        cursor = db.cursor()
+        cursor.execute('''
+            CREATE TABLE IF NOT EXISTS crop_diseases (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                crop_type TEXT NOT NULL,
+                crop_stage TEXT NOT NULL,
+                disease_name TEXT NOT NULL,
+                symptoms TEXT,
+                treatment TEXT
+            )
+        ''')
+        cursor.execute('''
+            CREATE TABLE IF NOT EXISTS market_prices (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                crop_name TEXT NOT NULL,
+                price_per_kg REAL NOT NULL,
+                market_name TEXT NOT NULL,
+                last_updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            )
+        ''')
+        cursor.execute('''
+            CREATE TABLE IF NOT EXISTS government_schemes (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                scheme_name TEXT NOT NULL,
+                description TEXT,
+                eligibility TEXT,
+                application_process TEXT,
+                url TEXT
+            )
+        ''')
+        cursor.execute('''
+            CREATE TABLE IF NOT EXISTS irrigation_schedules (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                crop_type TEXT NOT NULL,
+                crop_stage TEXT NOT NULL,
+                irrigation_advice TEXT NOT NULL
+            )
+        ''')
+        cursor.execute('''
+            CREATE TABLE IF NOT EXISTS crop_calendar_reminders (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                user_id TEXT NOT NULL,
+                crop_type TEXT NOT NULL,
+                activity TEXT NOT NULL,
+                reminder_date DATE NOT NULL,
+                notified INTEGER DEFAULT 0
+            )
+        ''')
+        db.commit()
+
+init_new_features_db_tables()
+
+# Route for crop disease and pest prediction
+@app.route('/crop_disease_prediction', methods=['GET', 'POST'])
+def crop_disease_prediction():
+    if 'username' not in session:
+        return redirect(url_for('login'))
+
+    diseases = []
+    message = ""
+    if request.method == 'POST':
+        crop_type = request.form.get('crop_type', '').strip()
+        crop_stage = request.form.get('crop_stage', '').strip()
+        if crop_type and crop_stage:
+            db = get_db()
+            cursor = db.cursor()
+            cursor.execute('''
+                SELECT disease_name, symptoms, treatment FROM crop_diseases
+                WHERE crop_type = ? AND crop_stage = ?
+            ''', (crop_type, crop_stage))
+            diseases = cursor.fetchall()
+            if not diseases:
+                message = "No disease data found for the selected crop and stage."
+        else:
+            message = "Please select both crop type and crop stage."
+
+    crop_types = ["Wheat", "Mango", "Paddy", "Cotton", "Other"]
+    crop_stages = ["Sowing", "Germination", "Flowering", "Harvesting", "Other"]
+
+    form_html = """
+    <form method="post" class="mb-4">
+        <label>Crop Type:</label>
+        <select name="crop_type" required class="form-select mb-2">
+            <option value="">Select Crop Type</option>
+    """
+    for ct in crop_types:
+        form_html += f'<option value="{ct}">{ct}</option>'
+    form_html += "</select>"
+
+    form_html += """
+        <label>Crop Stage:</label>
+        <select name="crop_stage" required class="form-select mb-2">
+            <option value="">Select Crop Stage</option>
+    """
+    for cs in crop_stages:
+        form_html += f'<option value="{cs}">{cs}</option>'
+    form_html += "</select>"
+
+    form_html += """
+        <button type="submit" class="btn btn-primary">Get Disease Info</button>
+    </form>
+    """
+
+    diseases_html = ""
+    if diseases:
+        diseases_html = "<h3>Possible Diseases and Treatments</h3><ul class='list-group mb-4'>"
+        for d in diseases:
+            diseases_html += f"<li class='list-group-item'><strong>{d['disease_name']}</strong><br>Symptoms: {d['symptoms']}<br>Treatment: {d['treatment']}</li>"
+        diseases_html += "</ul>"
+    elif message:
+        diseases_html = f"<div class='alert alert-warning'>{message}</div>"
+
+    return page("Crop Disease and Pest Prediction", form_html + diseases_html)
+
+# Route for market price updates
+@app.route('/market_prices')
+def market_prices():
+    if 'username' not in session:
+        return redirect(url_for('login'))
+
+    db = get_db()
+    cursor = db.cursor()
+    cursor.execute('SELECT * FROM market_prices ORDER BY last_updated DESC')
+    prices = cursor.fetchall()
+
+    prices_html = "<h3>Market Prices for Major Crops</h3><table class='table table-striped'><thead><tr><th>Crop</th><th>Price per Kg (INR)</th><th>Market</th><th>Last Updated</th></tr></thead><tbody>"
+    for p in prices:
+        prices_html += f"<tr><td>{p['crop_name']}</td><td>{p['price_per_kg']}</td><td>{p['market_name']}</td><td>{p['last_updated']}</td></tr>"
+    prices_html += "</tbody></table>"
+
+    return page("Market Price Updates", prices_html)
+
+# Route for government schemes and subsidies
+@app.route('/gov_schemes')
+def gov_schemes():
+    if 'username' not in session:
+        return redirect(url_for('login'))
+
+    db = get_db()
+    cursor = db.cursor()
+    cursor.execute('SELECT * FROM government_schemes ORDER BY scheme_name')
+    schemes = cursor.fetchall()
+
+    schemes_html = "<h3>Government Schemes and Subsidies</h3><ul class='list-group mb-4'>"
+    for s in schemes:
+        schemes_html += f"<li class='list-group-item'><strong>{s['scheme_name']}</strong><br>{s['description']}<br>Eligibility: {s['eligibility']}<br>Application Process: {s['application_process']}<br><a href='{s['url']}' target='_blank'>More Info</a></li>"
+    schemes_html += "</ul>"
+
+    return page("Government Schemes and Subsidies", schemes_html)
+
+# Route for irrigation scheduling advice
+@app.route('/irrigation_advice', methods=['GET', 'POST'])
+def irrigation_advice():
+    if 'username' not in session:
+        return redirect(url_for('login'))
+
+    advice_list = []
+    message = ""
+    if request.method == 'POST':
+        crop_type = request.form.get('crop_type', '').strip()
+        crop_stage = request.form.get('crop_stage', '').strip()
+        if crop_type and crop_stage:
+            db = get_db()
+            cursor = db.cursor()
+            cursor.execute('''
+                SELECT irrigation_advice FROM irrigation_schedules
+                WHERE crop_type = ? AND crop_stage = ?
+            ''', (crop_type, crop_stage))
+            rows = cursor.fetchall()
+            if rows:
+                advice_list = [row['irrigation_advice'] for row in rows]
+            else:
+                message = "No irrigation advice found for the selected crop and stage."
+        else:
+            message = "Please select both crop type and crop stage."
+
+    crop_types = ["Wheat", "Mango", "Paddy", "Cotton", "Other"]
+    crop_stages = ["Sowing", "Germination", "Flowering", "Harvesting", "Other"]
+
+    form_html = """
+    <form method="post" class="mb-4">
+        <label>Crop Type:</label>
+        <select name="crop_type" required class="form-select mb-2">
+            <option value="">Select Crop Type</option>
+    """
+    for ct in crop_types:
+        form_html += f'<option value="{ct}">{ct}</option>'
+    form_html += "</select>"
+
+    form_html += """
+        <label>Crop Stage:</label>
+        <select name="crop_stage" required class="form-select mb-2">
+            <option value="">Select Crop Stage</option>
+    """
+    for cs in crop_stages:
+        form_html += f'<option value="{cs}">{cs}</option>'
+    form_html += "</select>"
+
+    form_html += """
+        <button type="submit" class="btn btn-primary">Get Irrigation Advice</button>
+    </form>
+    """
+
+    advice_html = ""
+    if advice_list:
+        advice_html = "<h3>Irrigation Advice</h3><ul class='list-group mb-4'>"
+        for advice in advice_list:
+            advice_html += f"<li class='list-group-item'>{advice}</li>"
+        advice_html += "</ul>"
+    elif message:
+        advice_html = f"<div class='alert alert-warning'>{message}</div>"
+
+    return page("Irrigation Scheduling Advice", form_html + advice_html)
+
+# Route for crop calendar and reminders
+@app.route('/crop_calendar', methods=['GET', 'POST'])
+def crop_calendar():
+    if 'username' not in session:
+        return redirect(url_for('login'))
+
+    user_id = session['username']
+    db = get_db()
+    cursor = db.cursor()
+
+    message = ""
+    if request.method == 'POST':
+        crop_type = request.form.get('crop_type', '').strip()
+        activity = request.form.get('activity', '').strip()
+        reminder_date = request.form.get('reminder_date', '').strip()
+        if crop_type and activity and reminder_date:
+            cursor.execute('''
+                INSERT INTO crop_calendar_reminders (user_id, crop_type, activity, reminder_date)
+                VALUES (?, ?, ?, ?)
+            ''', (user_id, crop_type, activity, reminder_date))
+            db.commit()
+            message = "Reminder added successfully."
+        else:
+            message = "Please fill all fields to add a reminder."
+
+    cursor.execute('''
+        SELECT crop_type, activity, reminder_date FROM crop_calendar_reminders
+        WHERE user_id = ? ORDER BY reminder_date
+    ''', (user_id,))
+    reminders = cursor.fetchall()
+
+    crop_types = ["Wheat", "Mango", "Paddy", "Cotton", "Other"]
+    activities = ["Sowing", "Fertilizing", "Irrigation", "Harvesting", "Other"]
+
+    form_html = """
+    <form method="post" class="mb-4">
+        <label>Crop Type:</label>
+        <select name="crop_type" required class="form-select mb-2">
+            <option value="">Select Crop Type</option>
+    """
+    for ct in crop_types:
+        form_html += f'<option value="{ct}">{ct}</option>'
+    form_html += "</select>"
+
+    form_html += """
+        <label>Activity:</label>
+        <select name="activity" required class="form-select mb-2">
+            <option value="">Select Activity</option>
+    """
+    for act in activities:
+        form_html += f'<option value="{act}">{act}</option>'
+    form_html += "</select>"
+
+    form_html += """
+        <label>Reminder Date:</label>
+        <input type="date" name="reminder_date" required class="form-control mb-2" />
+        <button type="submit" class="btn btn-primary">Add Reminder</button>
+    </form>
+    """
+
+    reminders_html = ""
+    if reminders:
+        reminders_html = "<h3>Your Crop Calendar Reminders</h3><ul class='list-group mb-4'>"
+        for r in reminders:
+            reminders_html += f"<li class='list-group-item'>{r['reminder_date']}: {r['crop_type']} - {r['activity']}</li>"
+        reminders_html += "</ul>"
+    elif message:
+        reminders_html = f"<div class='alert alert-info'>{message}</div>"
+
+    return page("Crop Calendar and Reminders", form_html + reminders_html)
+
+# Add new feature cards to dashboard in multiple languages
+for lang_code in LANGUAGES:
+    LANGUAGES[lang_code]['cards'].extend([
+        {"title": "Crop Disease Prediction", "description": "Predict diseases and pests based on crop and stage.", "btn_text": "Check Diseases", "link": "/crop_disease_prediction"},
+        {"title": "Market Prices", "description": "View current market prices for major crops.", "btn_text": "View Prices", "link": "/market_prices"},
+        {"title": "Government Schemes", "description": "Explore schemes and subsidies for farmers.", "btn_text": "View Schemes", "link": "/gov_schemes"},
+        {"title": "Irrigation Advice", "description": "Get irrigation scheduling advice for your crops.", "btn_text": "Get Advice", "link": "/irrigation_advice"},
+        {"title": "Crop Calendar", "description": "Manage your crop activities and reminders.", "btn_text": "Manage Calendar", "link": "/crop_calendar"}
+    ])
+
+# Route for field shield setup
+@app.route('/field_shield', methods=['GET', 'POST'])
+def field_shield():
+    if 'username' not in session:
+        return redirect(url_for('login'))
+
+    user_id = session['username']
+    db = get_db()
+    cursor = db.cursor()
+
+    if request.method == 'POST':
+        # Get form data
+        field_name = request.form.get('field_name', '')
+        latitude = request.form.get('latitude')
+        longitude = request.form.get('longitude')
+        crop_type = request.form.get('crop_type')
+        detailed_other_crop_type = request.form.get('detailed_other_crop_type', '').strip()
+        crop_stage = request.form.get('crop_stage')
+        detailed_other_crop_stage = request.form.get('detailed_other_crop_stage', '').strip()
+
+        # Use detailed other values if "Other" is selected
+        if crop_type == 'Other' and detailed_other_crop_type:
+            crop_type = detailed_other_crop_type
+        if crop_stage == 'Other' and detailed_other_crop_stage:
+            crop_stage = detailed_other_crop_stage
+
+        # Validate required fields
+        if not latitude or not longitude or not crop_type or not crop_stage:
+            flash("सभी आवश्यक फ़ील्ड भरें।", "danger")
+        else:
+            cursor.execute('INSERT INTO fields (user_id, field_name, latitude, longitude, crop_type, crop_stage) VALUES (?, ?, ?, ?, ?, ?)',
+                           (user_id, field_name, latitude, longitude, crop_type, crop_stage))
+            db.commit()
+            flash("फ़ील्ड सफलतापूर्वक सहेजा गया।", "success")
+            return redirect(url_for('field_shield'))
+
+    # Fetch user's fields
+    cursor.execute('SELECT * FROM fields WHERE user_id = ?', (user_id,))
+    fields = cursor.fetchall()
+
+    crop_types = ["Wheat 🌾", "Mango 🥭", "Paddy 🌾", "Cotton 👕", "Other"]
+    crop_stages = ["Sowing", "Germination", "Flowering", "Harvesting", "Other"]
+
+    form_html = """
+    <h2>फ़ील्ड शील्ड सेटअप</h2>
+    <form method="post" class="mb-4" id="fieldShieldForm">
+        <input name="field_name" placeholder="फ़ील्ड का नाम (वैकल्पिक)" class="form-control mb-2" />
+        <input id="latitude" name="latitude" placeholder="अक्षांश (Latitude)" required class="form-control mb-2" />
+        <input id="longitude" name="longitude" placeholder="देशांतर (Longitude)" required class="form-control mb-2" />
+        <div id="map" style="height: 400px; margin-bottom: 1rem;"></div>
+        <select name="crop_type" id="crop_type" required class="form-select mb-2">
+            <option value="">फसल का प्रकार चुनें</option>
+    """
+    for ct in crop_types:
+        form_html += f'<option value="{ct}">{ct}</option>'
+    form_html += "</select>"
+
+    form_html += """
+        <input type="text" name="detailed_other_crop_type" id="detailed_other_crop_type" placeholder="अन्य फसल का प्रकार दर्ज करें" class="form-control mb-2" style="display:none;" />
+    """
+
+    form_html += '<select name="crop_stage" id="crop_stage" required class="form-select mb-2">'
+    form_html += '<option value="">फसल का चरण चुनें</option>'
+    for cs in crop_stages:
+        form_html += f'<option value="{cs}">{cs}</option>'
+    form_html += "</select>"
+
+    form_html += """
+        <input type="text" name="detailed_other_crop_stage" id="detailed_other_crop_stage" placeholder="अन्य फसल चरण दर्ज करें" class="form-control mb-2" style="display:none;" />
+    """
+
+    form_html += """
+        <button type="submit" class="btn btn-primary">फ़ील्ड सहेजें</button>
+    </form>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script>
+        document.getElementById('crop_type').addEventListener('change', function() {
+            var otherInput = document.getElementById('detailed_other_crop_type');
+            if (this.value === 'Other') {
+                otherInput.style.display = 'block';
+                otherInput.required = true;
+            } else {
+                otherInput.style.display = 'none';
+                otherInput.required = false;
+                otherInput.value = '';
+            }
+        });
+        document.getElementById('crop_stage').addEventListener('change', function() {
+            var otherInput = document.getElementById('detailed_other_crop_stage');
+            if (this.value === 'Other') {
+                otherInput.style.display = 'block';
+                otherInput.required = true;
+            } else {
+                otherInput.style.display = 'none';
+                otherInput.required = false;
+                otherInput.value = '';
+            }
+        });
+    </script>
+    """
+
+    # List existing fields
+    fields_html = "<h3>आपके फ़ील्ड</h3><ul class='list-group mb-4'>"
+    for f in fields:
+        fields_html += f"<li class='list-group-item'>{f['field_name'] or 'Unnamed Field'} - {f['crop_type']} ({f['crop_stage']}) at ({f['latitude']}, {f['longitude']})</li>"
+    fields_html += "</ul>"
+
+    # Protection tips based on crop type and stage (simple example)
+    tips_html = "<h3>फसल सुरक्षा सुझाव</h3><ul class='list-group mb-4'>"
+    for ct in crop_types:
+        for cs in crop_stages:
+            tips_html += f"<li><strong>{ct} - {cs}:</strong> कुछ सुरक्षा सुझाव यहाँ।</li>"
+    tips_html += "</ul>"
+
+    return page("फ़ील्ड शील्ड सेटअप", form_html + fields_html + tips_html)
+
+# Route for damage reporting with photo upload
+@app.route('/damage_report', methods=['GET', 'POST'])
+def damage_report():
+    if 'username' not in session:
+        return redirect(url_for('login'))
+
+    user_id = session['username']
+    db = get_db()
+    cursor = db.cursor()
+
+    # Fetch user's fields for selection
+    cursor.execute('SELECT * FROM fields WHERE user_id = ?', (user_id,))
+    fields = cursor.fetchall()
+
+    damage_types = ["Crop Damage", "Waterlogging", "Tree Fallen"]
+
+    if request.method == 'POST':
+        field_id = request.form.get('field_id')
+        damage_type = request.form.get('damage_type')
+        photo = request.files.get('photo')
+
+        photo_path = None
+        if photo:
+            filename = secure_filename(photo.filename)
+            upload_folder = os.path.join(os.getcwd(), 'uploads')
+            os.makedirs(upload_folder, exist_ok=True)
+            photo_path = os.path.join(upload_folder, filename)
+            photo.save(photo_path)
+
+        cursor.execute('INSERT INTO damage_reports (user_id, field_id, damage_type, photo_path) VALUES (?, ?, ?, ?)',
+                       (user_id, field_id, damage_type, photo_path))
+        db.commit()
+        flash("Damage report submitted successfully.", "success")
+        return redirect(url_for('damage_report'))
+
+    # Form HTML
+    form_html = """
+    <h2>Post-Storm Damage Reporting</h2>
+    <form method="post" enctype="multipart/form-data" class="mb-4">
+        <label for="field_id">Select Field:</label>
+        <select name="field_id" required class="form-select mb-2">
+            <option value="">Choose a field</option>
+    """
+    for f in fields:
+        form_html += f'<option value="{f["id"]}">{f["field_name"] or "Unnamed Field"} - {f["crop_type"]} ({f["crop_stage"]})</option>'
+    form_html += "</select>"
+
+    form_html += """
+        <label for="damage_type">Damage Type:</label>
+        <select name="damage_type" required class="form-select mb-2">
+    """
+    for dt in damage_types:
+        form_html += f'<option value="{dt}">{dt}</option>'
+    form_html += "</select>"
+
+    form_html += """
+        <label for="photo">Upload Photo (optional):</label>
+        <input type="file" name="photo" accept="image/*" class="form-control mb-2" />
+        <button type="submit" class="btn btn-danger">Submit Report</button>
+    </form>
+    """
+
+    # List recent damage reports
+    cursor.execute('SELECT dr.*, f.field_name FROM damage_reports dr LEFT JOIN fields f ON dr.field_id = f.id WHERE dr.user_id = ? ORDER BY dr.created_at DESC LIMIT 5', (user_id,))
+    reports = cursor.fetchall()
+
+    reports_html = "<h3>Recent Damage Reports</h3><ul class='list-group mb-4'>"
+    for r in reports:
+        photo_link = f'<br><a href="/uploads/{os.path.basename(r["photo_path"])}" target="_blank">View Photo</a>' if r["photo_path"] else ""
+        reports_html += f"<li class='list-group-item'>{r['damage_type']} reported for {r['field_name'] or 'Unnamed Field'} on {r['created_at']}{photo_link}</li>"
+    reports_html += "</ul>"
+
+    return page("Damage Reporting", form_html + reports_html)
+
+# Route for sending SMS reminders before storms (dummy implementation)
+@app.route('/sms_reminder', methods=['GET', 'POST'])
+def sms_reminder():
+    if 'username' not in session:
+        return redirect(url_for('login'))
+
+    user_id = session['username']
+    db = get_db()
+    cursor = db.cursor()
+
+    # Fetch user's fields
+    cursor.execute('SELECT * FROM fields WHERE user_id = ?', (user_id,))
+    fields = cursor.fetchall()
+
+    alert_types = ["Storm", "Frost", "Rain"]
+
+    message = ""
+    if request.method == 'POST':
+        field_id = request.form.get('field_id')
+        alert_type = request.form.get('alert_type')
+        phone_number = request.form.get('phone_number')
+
+        if field_id and alert_type and phone_number:
+            cursor.execute('INSERT INTO sms_reminders (user_id, field_id, alert_type, phone_number) VALUES (?, ?, ?, ?)',
+                           (user_id, field_id, alert_type, phone_number))
+            db.commit()
+            message = "SMS reminder set successfully."
+
+    form_html = """
+    <h2>SMS Reminder Setup</h2>
+    <form method="post" class="mb-4">
+        <label for="field_id">Select Field:</label>
+        <select name="field_id" required class="form-select mb-2">
+            <option value="">Choose a field</option>
+    """
+    for f in fields:
+        form_html += f'<option value="{f["id"]}">{f["field_name"] or "Unnamed Field"} - {f["crop_type"]} ({f["crop_stage"]})</option>'
+    form_html += "</select>"
+
+    form_html += """
+        <label for="alert_type">Alert Type:</label>
+        <select name="alert_type" required class="form-select mb-2">
+    """
+    for at in alert_types:
+        form_html += f'<option value="{at}">{at}</option>'
+    form_html += "</select>"
+
+    form_html += """
+        <label for="phone_number">Phone Number:</label>
+        <input type="text" name="phone_number" required class="form-control mb-2" placeholder="+91xxxxxxxxxx" />
+        <button type="submit" class="btn btn-primary">Set Reminder</button>
+    </form>
+    """
+
+    message_html = f'<div class="alert alert-success">{message}</div>' if message else ""
+
+    return page("SMS Reminder Setup", form_html + message_html)
+
+# Add links to new features in main dashboard cards for English and Hindi
+LANGUAGES['en']['cards'].append({"title": "My Village Weather", "description": "Realtime weather and alerts in your village.", "btn_text": "Open Village Weather", "link": "/village_weather"})
+LANGUAGES['hi']['cards'].append({"title": "मेरा गाँव का मौसम", "description": "अपने गाँव का रियल-टाइम मौसम और अलर्ट देखें।", "btn_text": "गाँव का मौसम खोलें", "link": "/village_weather"})
+
+app.run(debug=True, use_reloader=False, port=5001)
